@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Laptops</title>
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="assets/all.min.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/custom.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header Section -->
+                <section id="header">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+                                <div class="container">
+                                    <a class="navbar-brand fw-bolder fs-3" href="#">MM-LAPTOPS</a>
+                                    <a href="" class="text-black fs-6 p-0 position-relative"
+                                        title="No items in the cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
+                                    </a>
+                                    <a href="" class="text-black fs-6 ps-2 ps-sm-0 ps-lg-5 position-relative"
+                                        title="No orders in the checkout">
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse d-lg-flex justify-content-center align-items-center"
+                                        id="navbarNav">
+                                        <ul class="navbar-nav mx-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">HOME</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">SHOP</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">BLOG</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="">CONTACT</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Guest -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">
+                                                    <i class="fa-solid fa-user"></i>&nbsp;
+                                                    Login
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Auth -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle fw-bold px-4" href="#" role="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <img src="images/laptop_illu.webp" style="width:50px;height:50px"
+                                                        alt="User Profile Image" class="img-fluid rounded-circle">
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-user-tie"></i> &nbsp;
+                                                            Profile
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-key"></i> &nbsp;
+                                                            Change Password
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-arrow-right-from-bracket"></i> &nbsp;
+                                                            Logout
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <img src="images/laptop_home.jpg" alt="image" class="w-100 img-fluid object-fit-cover"
+                                id="respon-img">
+                            <div class="col-md-6 offset-md-3" id="searchBar">
+                                <form method="GET">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </span>
+                                        <input type="text" name="searchKey" class="form-control bg-light py-2"
+                                            placeholder="Search laptops">
+                                        <select name="category_id">
+                                            <option value="">Category</option>
+                                        </select>
+
+                                        <button type="submit" class="btn btn-info ms-3">Search</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="main">
+                    <div class="container">
+                        <div class="row py-5">
+                            <!-- Post Detail Section -->
+                            <div class="col-md-8 order-md-5">
+                                <h2 class="text-black text-capitalize fw-bolder px-1 pb-3">How To become
+                                    web
+                                    developer in
+                                    6
+                                    months?
+                                </h2>
+                                <p class="fs-6 text-black text-center pb-3">By Admin Composer | January 12, 2023</p>
+                                <img src="images/laptop_illu1.webp" alt="post image"
+                                    class="w-100 border img-fluid object-fit-cover">
+                                <p class="mt-4 mb-4">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quod
+                                    praesentium ullam vero itaque vitae natus deleniti consequatur repellendus aut nemo
+                                    at ipsam, aliquam excepturi voluptas aspernatur ab, laborum porro?
+                                </p>
+                                <!-- like and comment -->
+                                <p class="text-center">
+                                    <button class="button-hover btn text-white bg-dark rounded-circle position-relative"
+                                        title="like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        <span class="badge bg-danger position-absolute rounded-circle">999</span>
+                                    </button>
+                                    <button
+                                        class="button-hover btn text-white bg-dark rounded-circle position-relative ms-5"
+                                        title="comment" data-bs-toggle="modal" data-bs-target="#commentModal">
+                                        <i class="fa-solid fa-comment"></i>
+                                        <span class="badge bg-danger position-absolute rounded-circle">10</span>
+                                    </button>
+                                </p>
+                                <!-- Comments Modal -->
+                                <div class="modal fade" id="commentModal" tabindex="-1"
+                                    aria-labelledby="commentModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="commentModalLabel">Comments</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        Yes, I like your posts.
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        You are so crazy man. but i like your thoughts.
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 hours ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        HHH, so funny post
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        Your thoughts are so great.
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        Very, very good thoughts
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        Yes, I like your posts.
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="btn-close float-end"
+                                                            onclick="confirm('Sure to delete?')"></a>
+                                                        Yes, I like your posts.
+                                                        <div class="mt-2 small">
+                                                            By <b>User</b>,
+                                                            2 seconds ago
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!-- Auth -->
+                                                <form action="" class="col-12">
+                                                    <textarea id="" class="form-control my-2"
+                                                        placeholder="Write a public comment..."></textarea>
+                                                    <button class="btn btn-sm btn-secondary float-end">
+                                                        <i class="fa-solid fa-paper-plane"></i>
+                                                        Confirm Comment
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- share -->
+                                <p class="fw-bolder">Categories:
+                                    <span class="text-muted">Food</span>
+                                </p>
+                                <p class="fw-bolder">Share on:
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-instagram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-telegram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-twitter"></i></a>
+                                </p>
+                            </div>
+                            <div class="col-md-4 order-md-1">
+                                <!-- Search -->
+                                <form action="">
+                                    <div class="input-group bg-secondary-subtle p-4 rounded">
+                                        <input type="text" class="form-control" placeholder="Search posts">
+                                        <button class="btn btn-outline-secondary bg-white"><i
+                                                class="fa-solid fa-magnifying-glass"></i></button>
+                                    </div>
+                                </form>
+                                <!-- Categories -->
+                                <div class="mt-4">
+                                    <h4 class="p-3 fw-bold">Categories</h4>
+                                    <ul class="list-group list-group-flush py-2">
+                                        <li class="list-group-item">An item (20)</li>
+                                        <li class="list-group-item">A second item (10)</li>
+                                        <li class="list-group-item">A third item (12)</li>
+                                        <li class="list-group-item">A fourth item (8)</li>
+                                    </ul>
+                                </div>
+                                <!-- Recent Posts -->
+                                <div class="mt-4">
+                                    <h4 class="p-3 fw-bold">Recent Posts</h4>
+                                    <a href="" class="text-decoration-none">
+                                        <div class="row mt-2">
+                                            <div class="col-4">
+                                                <img src="images/lenovo.jpg" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover" style="height: 100%;">
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="fw-bold text-black text-capitalize">How to become developer
+                                                    in 6 months
+                                                </h6>
+                                                <small class="text-muted">MAR 05, 2023</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="" class="text-decoration-none">
+                                        <div class="row mt-2">
+                                            <div class="col-4">
+                                                <img src="images/lenovo.jpg" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover" style="height: 100%;">
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="fw-bold text-black text-capitalize">How to become developer
+                                                    in 6 months
+                                                </h6>
+                                                <small class="text-muted">MAR 05, 2023</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="" class="text-decoration-none">
+                                        <div class="row mt-2">
+                                            <div class="col-4">
+                                                <img src="images/lenovo.jpg" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover" style="height: 100%;">
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="fw-bold text-black text-capitalize">How to become developer
+                                                    in 6 months
+                                                </h6>
+                                                <small class="text-muted">MAR 05, 2023</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Popular Posts Section -->
+                        <section id="blog-posts">
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1 mt-sm-0 mt-3 pt-5 mb-5">
+                                    <h1 class="fw-bolder text-center mb-5 border-bottom border-3 pb-3">
+                                        Post You May Like
+                                    </h1>
+                                    <div class="row mt-sm-4">
+                                        <div class="col-md-4 col-sm-6">
+                                            <a href="" class="text-decoration-none">
+                                                <img src="images/laptop_illu.webp" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover border">
+                                                <p class="text-muted mt-1">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                    May 4, 2019 &nbsp; &nbsp;
+                                                    <i class="fa-regular fa-comment pe-1"></i>5
+                                                </p>
+                                                <h5 class="text-capitalize text-black fw-bolder">How to train your
+                                                    dragon</h5>
+                                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur
+                                                    Lorem
+                                                    ipsum dolor sit amet
+                                                    consectetur
+                                                </p>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <a href="" class="text-decoration-none">
+                                                <img src="images/laptop_illu.webp" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover border">
+                                                <p class="text-muted mt-1">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                    May 4, 2019 &nbsp; &nbsp;
+                                                    <i class="fa-regular fa-comment pe-1"></i>5
+                                                </p>
+                                                <h5 class="text-capitalize text-black fw-bolder">How to train your
+                                                    dragon</h5>
+                                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur
+                                                    Lorem
+                                                    ipsum dolor sit amet
+                                                    consectetur
+                                                </p>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <a href="" class="text-decoration-none">
+                                                <img src="images/laptop_illu.webp" alt="post image"
+                                                    class="w-100 img-fluid object-fit-cover border">
+                                                <p class="text-muted mt-1">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                    May 4, 2019 &nbsp; &nbsp;
+                                                    <i class="fa-regular fa-comment pe-1"></i>5
+                                                </p>
+                                                <h5 class="text-capitalize text-black fw-bolder">How to train your
+                                                    dragon</h5>
+                                                <p class="text-muted">Lorem ipsum dolor sit amet consectetur
+                                                    Lorem
+                                                    ipsum dolor sit amet
+                                                    consectetur
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Footer Section -->
+                <section id="footer" class="bg-secondary-subtle">
+                    <div class="container">
+                        <div class="row text-black mt-3">
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <a href=""
+                                    class="navbar-brand fw-bolder fs-4 text-decoration-none text-uppercase text-black">MM
+                                    Laptops
+                                </a>
+                                <p class="mt-3 text-muted">Address: TharkayTa-Road, Yangon <br>
+                                    Phone: 09 258 138 856 <br>
+                                    Email: hello@gmail.com
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">About us</h5>
+                                <div class="text-muted">We learn</div>
+                                <div class="text-muted">We share</div>
+                                <div class="text-muted">We code</div>
+                                <div class="text-muted">We care environment</div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">Product</h5>
+                                <div class="text-muted">Main Sponser</div>
+                                <div class="text-muted">Aung Bann</div>
+                                <div class="text-muted">Transportation</div>
+                                <div class="text-muted">Shopify</div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">Contact Us</h5>
+                                <div class="text-muted">hello@minnaungweb.com</div>
+                                <div class="text-muted">+95 -258138866</div>
+                                <div class="mt-1">
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-instagram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-telegram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- sub-footer section -->
+                <section class="bg-white">
+                    <div class="container">
+                        <div class="row py-4">
+                            <div class="col-12 d-flex justify-content-between">
+                                <div class="text-muted">&copy; 2022 Energitic Themes</div>
+                                <div class="text-muted">
+                                    <span>Privacy Policy</span>
+                                    <span>Terms & Conditions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- jquery js -->
+<script src="assets/jquery.min.js"></script>
+<!-- axios js -->
+<script src="assets/axios.min.js"></script>
+<!-- fontawesome js -->
+<script src="assets/all.min.js"></script>
+<!-- bootstrap js -->
+<script src="assets/bootstrap.bundle.min.js"></script>
+<!-- Custom js -->
+<script src="assets/custom.js"></script>
+
+</html>

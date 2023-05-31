@@ -1,0 +1,44 @@
+.dropdown-item, .nav-link:hover {
+    color: rgb(72, 186, 209);
+    font-size: 15px;
+}
+
+.navbar-brand:hover {
+    color: rgb(72, 186, 209);
+}
+
+/* items hover effect */
+#detail-buttons {
+    opacity: 0;
+}
+.card:hover #detail-buttons{
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.button-hover:hover {
+    background-color: rgb(8, 200, 200) !important;
+    transform: rotate(1turn);
+    transition: 0.5s;
+}
+
+/* for link hover effect */
+.link-hover:hover {
+    background-color: rgb(8, 200, 200) !important;
+    transform: rotate(1turn);
+    transition: 0.5s;
+}
+
+/* for img responsive */
+@media (max-width: 600px) {
+    #respon-img {
+        height: 250px;
+    }
+}
+
+
+
+
+
+
+

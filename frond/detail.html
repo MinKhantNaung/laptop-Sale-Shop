@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Laptops</title>
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="assets/all.min.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/custom.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header Section -->
+                <section id="header">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+                                <div class="container">
+                                    <a class="navbar-brand fw-bolder fs-3" href="#">MM-LAPTOPS</a>
+                                    <a href="" class="text-black fs-6 p-0 position-relative"
+                                        title="No items in the cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
+                                    </a>
+                                    <a href="" class="text-black fs-6 ps-2 ps-sm-0 ps-lg-5 position-relative"
+                                        title="No orders in the checkout">
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse d-lg-flex justify-content-center align-items-center"
+                                        id="navbarNav">
+                                        <ul class="navbar-nav mx-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">HOME</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">SHOP</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">BLOG</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="">CONTACT</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Guest -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link fw-bold px-4" href="#">
+                                                    <i class="fa-solid fa-user"></i>&nbsp;
+                                                    Login
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Auth -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle fw-bold px-4" href="#" role="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <img src="images/laptop_illu.webp" style="width:50px;height:50px"
+                                                        alt="User Profile Image" class="img-fluid rounded-circle">
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-user-tie"></i> &nbsp;
+                                                            Profile
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-key"></i> &nbsp;
+                                                            Change Password
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="fa-solid fa-arrow-right-from-bracket"></i> &nbsp;
+                                                            Logout
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <img src="images/laptop_home.jpg" alt="image" class="w-100 img-fluid object-fit-cover"
+                                id="respon-img">
+                            <div class="col-md-6 offset-md-3" id="searchBar">
+                                <form method="GET">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </span>
+                                        <input type="text" name="searchKey" class="form-control bg-light py-2"
+                                            placeholder="Search laptops">
+                                        <select name="category_id">
+                                            <option value="">Category</option>
+                                        </select>
+
+                                        <button type="submit" class="btn btn-info ms-3">Search</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="main">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Detail Section -->
+                            <div class="col-12 my-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="images/laptop_illu.webp"
+                                            class="img-fluid object-fit-cover w-100 border">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3 class="fw-bold">Lenoveo Idea Thinkpad
+                                        </h3>
+                                        <span class="badge bg-info mb-2">Lenovo</span>
+                                        <span class="badge bg-secondary mb-2">Second</span>
+                                        <p>4.5 <i class="fa-solid fa-star text-warning"></i>&nbsp; (ratings)</p>
+                                        <h3 class="fw-bold text-danger">$300</h3>
+                                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Dolorem ut fuga
+                                            nihil non facilis ducimus debitis eos voluptatem numquam ipsam? Vel fugiat
+                                            in reprehenderit totam molestiae deserunt magnam alias dignissimos.</p>
+                                        <div class="input-group bg-light d-flex align-items-center mt-3">
+                                            <button type="button" class="btn btn-white border-0 minus">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </button>
+                                            <input type="text" class="border-0 text-center quantity" style="width:50px;"
+                                                value="1" min="1" disabled>
+                                            <button type="button" class="btn btn-white border-0 plus">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-info text-white fw-bolder">
+                                                ADD TO CART
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-success ms-2"
+                                                data-bs-toggle="modal" data-bs-target="#rate">
+                                                <i class="fa-solid fa-star text-warning"></i>
+                                                Rate this
+                                            </button>
+                                        </div>
+                                        <!-- for rate modal -->
+                                        <div class="modal fade" id="rate" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                            Rate this laptop?</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <select name="rating" class="form-select">
+                                                            <option value="1">1 Star</option>
+                                                            <option value="2">2 Stars</option>
+                                                            <option value="3">3 Stars</option>
+                                                            <option value="4">4 Stars</option>
+                                                            <option value="5">5 Stars</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-primary">
+                                                            Rate
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <p class="fs-6 fw-bold">Availability: <span
+                                                    class="text-muted">available</span></p>
+                                            <p class="fs-6 fw-bold">Share on:
+                                                <a href=""
+                                                    class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                                        class="fa-brands fa-facebook-f"></i></a>
+                                                <a href=""
+                                                    class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                                        class="fa-brands fa-instagram"></i></a>
+                                                <a href=""
+                                                    class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                                        class="fa-brands fa-telegram"></i></a>
+                                                <a href=""
+                                                    class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                                        class="fa-brands fa-twitter"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Related Laptops Section -->
+                            <seciton id="items">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-1 mt-sm-0 mt-3 mb-5">
+                                        <h1 class="fw-bolder text-center mb-5 border-bottom border-3 pb-3">Related
+                                            Laptops
+                                        </h1>
+                                        <div class="row mt-sm-4">
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="card mt-3">
+                                                    <img src="images/laptop_illu.webp" style="height:150px"
+                                                        class="card-img-top img-fluid object-fit-cover" alt="image">
+                                                    <span
+                                                        class="badge bg-danger position-absolute top-0 rounded-circle py-3">-50%</span>
+                                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                                        id="detail-buttons">
+                                                        <button type="button"
+                                                            class="btn text-white bg-dark rounded-circle button-hover"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="fa-solid fa-star"></i>
+                                                        </button>
+                                                        <a href=""
+                                                            class="btn text-white bg-dark rounded-circle button-hover">
+                                                            <i class="fa-solid fa-cart-shopping"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-body overlay"
+                                                        style="background: rgb(220, 231, 231);">
+                                                        <a href="" class="text-decoration-none">
+                                                            <h6 class="card-title text-capitalize">
+                                                                Item Name
+                                                                <span class="text-info fw-bold fs-6">
+                                                                    New
+                                                                </span>
+                                                            </h6>
+                                                        </a>
+                                                        <p class="card-text text-primary fs-6">$100 &nbsp;
+                                                            <span class="text-decoration-line-through">$150</span>
+                                                        </p>
+                                                    </div>
+                                                    <!-- for rate modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Rate this laptop?</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <select name="rating" class="form-select">
+                                                                        <option value="1">1 Star</option>
+                                                                        <option value="2">2 Stars</option>
+                                                                        <option value="3">3 Stars</option>
+                                                                        <option value="4">4 Stars</option>
+                                                                        <option value="5">5 Stars</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="button" class="btn btn-primary">
+                                                                        Rate
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="card mt-3">
+                                                    <img src="images/laptop_illu.webp" style="height:150px"
+                                                        class="card-img-top img-fluid object-fit-cover" alt="image">
+                                                    <span
+                                                        class="badge bg-danger position-absolute top-0 rounded-circle py-3">-50%</span>
+                                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                                        id="detail-buttons">
+                                                        <button type="button"
+                                                            class="btn text-white bg-dark rounded-circle button-hover"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="fa-solid fa-star"></i>
+                                                        </button>
+                                                        <a href=""
+                                                            class="btn text-white bg-dark rounded-circle button-hover">
+                                                            <i class="fa-solid fa-cart-shopping"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-body overlay"
+                                                        style="background: rgb(220, 231, 231);">
+                                                        <a href="" class="text-decoration-none">
+                                                            <h6 class="card-title text-capitalize">
+                                                                Item Name
+                                                                <span class="text-info fw-bold fs-6">
+                                                                    New
+                                                                </span>
+                                                            </h6>
+                                                        </a>
+                                                        <p class="card-text text-primary fs-6">$100 &nbsp;
+                                                            <span class="text-decoration-line-through">$150</span>
+                                                        </p>
+                                                    </div>
+                                                    <!-- for rate modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Rate this laptop?</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <select name="rating" class="form-select">
+                                                                        <option value="1">1 Star</option>
+                                                                        <option value="2">2 Stars</option>
+                                                                        <option value="3">3 Stars</option>
+                                                                        <option value="4">4 Stars</option>
+                                                                        <option value="5">5 Stars</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="button" class="btn btn-primary">
+                                                                        Rate
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="card mt-3">
+                                                    <img src="images/laptop_illu.webp" style="height:150px"
+                                                        class="card-img-top img-fluid object-fit-cover" alt="image">
+                                                    <span
+                                                        class="badge bg-danger position-absolute top-0 rounded-circle py-3">-50%</span>
+                                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                                        id="detail-buttons">
+                                                        <button type="button"
+                                                            class="btn text-white bg-dark rounded-circle button-hover"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="fa-solid fa-star"></i>
+                                                        </button>
+                                                        <a href=""
+                                                            class="btn text-white bg-dark rounded-circle button-hover">
+                                                            <i class="fa-solid fa-cart-shopping"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-body overlay"
+                                                        style="background: rgb(220, 231, 231);">
+                                                        <a href="" class="text-decoration-none">
+                                                            <h6 class="card-title text-capitalize">
+                                                                Item Name
+                                                                <span class="text-info fw-bold fs-6">
+                                                                    New
+                                                                </span>
+                                                            </h6>
+                                                        </a>
+                                                        <p class="card-text text-primary fs-6">$100 &nbsp;
+                                                            <span class="text-decoration-line-through">$150</span>
+                                                        </p>
+                                                    </div>
+                                                    <!-- for rate modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Rate this laptop?</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <select name="rating" class="form-select">
+                                                                        <option value="1">1 Star</option>
+                                                                        <option value="2">2 Stars</option>
+                                                                        <option value="3">3 Stars</option>
+                                                                        <option value="4">4 Stars</option>
+                                                                        <option value="5">5 Stars</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="button" class="btn btn-primary">
+                                                                        Rate
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                <div class="card mt-3">
+                                                    <img src="images/laptop_illu.webp" style="height:150px"
+                                                        class="card-img-top img-fluid object-fit-cover" alt="image">
+                                                    <span
+                                                        class="badge bg-danger position-absolute top-0 rounded-circle py-3">-50%</span>
+                                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                                        id="detail-buttons">
+                                                        <button type="button"
+                                                            class="btn text-white bg-dark rounded-circle button-hover"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="fa-solid fa-star"></i>
+                                                        </button>
+                                                        <a href=""
+                                                            class="btn text-white bg-dark rounded-circle button-hover">
+                                                            <i class="fa-solid fa-cart-shopping"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-body overlay"
+                                                        style="background: rgb(220, 231, 231);">
+                                                        <a href="" class="text-decoration-none">
+                                                            <h6 class="card-title text-capitalize">
+                                                                Item Name
+                                                                <span class="text-info fw-bold fs-6">
+                                                                    New
+                                                                </span>
+                                                            </h6>
+                                                        </a>
+                                                        <p class="card-text text-primary fs-6">$100 &nbsp;
+                                                            <span class="text-decoration-line-through">$150</span>
+                                                        </p>
+                                                    </div>
+                                                    <!-- for rate modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Rate this laptop?</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <select name="rating" class="form-select">
+                                                                        <option value="1">1 Star</option>
+                                                                        <option value="2">2 Stars</option>
+                                                                        <option value="3">3 Stars</option>
+                                                                        <option value="4">4 Stars</option>
+                                                                        <option value="5">5 Stars</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="button" class="btn btn-primary">
+                                                                        Rate
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </seciton>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Section -->
+                <section id="footer" class="bg-secondary-subtle">
+                    <div class="container">
+                        <div class="row text-black mt-3">
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <a href=""
+                                    class="navbar-brand fw-bolder fs-4 text-decoration-none text-uppercase text-black">MM
+                                    Laptops
+                                </a>
+                                <p class="mt-3 text-muted">Address: TharkayTa-Road, Yangon <br>
+                                    Phone: 09 258 138 856 <br>
+                                    Email: hello@gmail.com
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">About us</h5>
+                                <div class="text-muted">We learn</div>
+                                <div class="text-muted">We share</div>
+                                <div class="text-muted">We code</div>
+                                <div class="text-muted">We care environment</div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">Product</h5>
+                                <div class="text-muted">Main Sponser</div>
+                                <div class="text-muted">Aung Bann</div>
+                                <div class="text-muted">Transportation</div>
+                                <div class="text-muted">Shopify</div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 py-sm-5 py-3">
+                                <h5 class="mb-3">Contact Us</h5>
+                                <div class="text-muted">hello@minnaungweb.com</div>
+                                <div class="text-muted">+95 -258138866</div>
+                                <div class="mt-1">
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-instagram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-telegram"></i></a>
+                                    <a href="" class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
+                                            class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- sub-footer section -->
+                <section class="bg-white">
+                    <div class="container">
+                        <div class="row py-4">
+                            <div class="col-12 d-flex justify-content-between">
+                                <div class="text-muted">&copy; 2022 Energitic Themes</div>
+                                <div class="text-muted">
+                                    <span>Privacy Policy</span>
+                                    <span>Terms & Conditions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- jquery js -->
+<script src="assets/jquery.min.js"></script>
+<!-- axios js -->
+<script src="assets/axios.min.js"></script>
+<!-- fontawesome js -->
+<script src="assets/all.min.js"></script>
+<!-- bootstrap js -->
+<script src="assets/bootstrap.bundle.min.js"></script>
+<!-- Custom js -->
+<script src="assets/custom.js"></script>
+
+</html>

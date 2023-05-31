@@ -1,0 +1,116 @@
+open time and close time
+migration
+ public function up()
+    {
+        Schema::create('open_times', function (Blueprint $table) {
+            $table->id();
+            $table->string('day');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->timestamps();
+        });
+    }
+
+form
+<form method="POST" action="{{ route('open-times.store') }}">
+    @csrf
+    <div class="form-group">
+        <label for="day">Day:</label>
+        <input type="text" name="day" id="day" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="start_time">Open Time:</label>
+        <input type="time" name="start_time" id="start_time" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="end_time">Close Time:</label>
+        <input type="time" name="end_time" id="end_time" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Open Time</button>
+</form>
+
+store
+class OpenTimeController extends Controller
+{
+    public function index()
+    {
+        $openTimes = OpenTime::all();
+
+        return view('open_times.index', compact('openTimes'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the form input
+        $validatedData = $request->validate([
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
+        ]);
+
+        // Create a new open time record
+        OpenTime::create($validatedData);
+
+        // Redirect or show a success message
+        return redirect()->back()->with('success', 'Open time added successfully.');
+    }
+}
+
+show in view
+@foreach ($openTimes as $openTime)
+    <p>{{ \Carbon\Carbon::parse($openTime->start_time)->format('h:i A') }} to {{ \Carbon\Carbon::parse($openTime->end_time)->format('H:i') }}</p>
+@endforeach
+
+/////////////////////////////
+discount system
+store
+public function store(Request $request)
+    {
+        $request->validate([
+            'product_name' => 'required',
+            'price' => 'required|numeric',
+            'discount' => 'required|numeric|min:0|max:1',
+            'active' => 'boolean',
+        ]);
+
+        $product = new Product;
+        $product->product_name = $request->product_name;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->discount_price = $request->price * (1 - $request->discount);
+        $product->active = $request->has('active');
+        $product->save();
+
+        return redirect()->route('products.create')->with('success', 'Product created successfully!');
+    }
+
+form//
+ <form action="{{ route('products.store') }}" method="POST">
+        @csrf
+        <div>
+            <label for="product_name">Product Name:</label>
+            <input type="text" name="product_name" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" name="price" step="0.01" required>
+        </div>
+        <div>
+            <label for="discount">Discount:</label>
+            <input type="number" name="discount" step="0.01" min="0" max="1" required>
+        </div>
+        <div>
+            <label for="active">Active:</label>
+            <input type="checkbox" name="active">
+        </div>
+        <div>
+            <button type="submit">Create Product</button>
+        </div>
+    </form>
+</body>
+</html>
+
+filter by//
+where('discount', '>', 0);
+
+
+
