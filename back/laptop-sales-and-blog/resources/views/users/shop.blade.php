@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-10 offset-md-1">
                     <div class="row mb-sm-5 mt-sm-4">
-                        @foreach ($brands as $brand)
+                        @foreach ($brandsFilter as $brand)
                             <div class="col-lg-2 col-sm-3 col-4 mt-2">
                                 <a href="">
                                     <div class="p-2 position-relative"

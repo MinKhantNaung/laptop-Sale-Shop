@@ -132,11 +132,14 @@
                                         </h6>
                                     </a>
                                     @if ($laptop->discount > 0)
-                                        <p class="card-text text-primary fs-6">${{ $laptop->discount_price }} &nbsp;
+                                        <p class="card-text text-primary fs-6">
+                                            ${{ $laptop->discount_price }}
+                                            &nbsp;
                                             <span class="text-decoration-line-through">${{ $laptop->price }}</span>
                                         </p>
                                     @else
-                                        <p class="card-text text-primary fs-6">${{ $laptop->discount_price }}
+                                        <p class="card-text text-primary fs-6">
+                                            ${{ $laptop->discount_price }}
                                         </p>
                                     @endif
                                 </div>

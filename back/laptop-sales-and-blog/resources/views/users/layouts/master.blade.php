@@ -114,15 +114,18 @@
                             <img src="{{ asset('images/laptop_home.jpg') }}" alt="image"
                                 class="w-100 img-fluid object-fit-cover" id="respon-img">
                             <div class="col-md-6 offset-md-3" id="searchBar">
-                                <form method="GET">
+                                <form action="{{ route('shop.search') }}" method="GET">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </span>
-                                        <input type="text" name="searchKey" class="form-control bg-light py-2"
+                                        <input type="text" name="search" class="form-control bg-light py-2"
                                             placeholder="Search laptops">
-                                        <select name="category_id">
-                                            <option value="">Category</option>
+                                        <select name="brand_id">
+                                            <option value="">Brand</option>
+                                            @foreach ($brands as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            @endforeach
                                         </select>
 
                                         <button type="submit" class="btn btn-info ms-3">Search</button>

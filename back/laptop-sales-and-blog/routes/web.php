@@ -16,6 +16,8 @@ Route::get('/shop/detail/{id}', [HomeController::class, 'shopDetail'])->name('sh
 Route::get('/shop/all-brands', [HomeController::class, 'allBrands'])->name('shop.brands');
 // for all laptops page when click view more
 Route::get('/shop/all-laptops', [HomeController::class, 'allLaptops'])->name('shop.laptops');
+// for search laptops in search bar
+Route::get('/shop/search-filter', [HomeController::class, 'searchLaptops'])->name('shop.search');
 
 Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
