@@ -90,9 +90,10 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="">
+                                                    <form class="editForm">
                                                         <div class="modal-body">
-                                                            <input type="text" value="{{ $laptop->id }}">
+                                                            <input type="hidden" class="laptopId"
+                                                                value="{{ $laptop->id }}">
                                                             <select name="rating" class="form-select">
                                                                 <option value="1">1 Star</option>
                                                                 <option value="2">2 Stars</option>
@@ -104,7 +105,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="button" class="btn btn-primary">
+                                                            <button type="submit" class="btn btn-primary">
                                                                 Rate
                                                             </button>
                                                         </div>
@@ -188,4 +189,43 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.editForm').submit(function(e) {
+                e.preventDefault();
+                let modalDiv = $(this).closest('.modal');
+                // get laptopId and rating and user_id
+                let laptopId = Number(modalDiv.find('.laptopId').val());
+                let rating = Number(modalDiv.find('select[name="rating"]').val());
+
+                $.ajax({
+                    type: 'get',
+                    url: '/shop/products/ratings',
+                    data: {
+                        'laptopId': laptopId,
+                        'rating': rating
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status == 'fail') {
+                            // rate fail
+                            // for hiding modal
+                            $(`#modal${laptopId}`).modal('hide');
+                            return swal('Sorry!', `You already rated this laptop!`,
+                                'warning');
+                        } else {
+                            // rate success
+                            // for hiding modal
+                            $(`#modal${laptopId}`).modal('hide');
+                            return swal('Thank you!', `You rated ${response.productName}.`,
+                                'success');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection
