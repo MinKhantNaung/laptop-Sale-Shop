@@ -36,7 +36,7 @@
                                 @endif
                                 <div class="position-absolute top-50 start-50 translate-middle" id="detail-buttons">
                                     <button type="button" class="btn text-white bg-dark rounded-circle button-hover"
-                                        data-bs-toggle="modal" data-bs-target="#featuredModal{{ $laptop->id }}">
+                                        data-bs-toggle="modal" data-bs-target="#modal{{ $laptop->id }}">
                                         <i class="fa-solid fa-star"></i>
                                     </button>
                                     <a href="{{ route('shop.detail', $laptop->id) }}"
@@ -45,15 +45,13 @@
                                     </a>
                                 </div>
                                 <div class="card-body overlay" style="background: rgb(220, 231, 231);">
-                                    <a href="" class="text-decoration-none">
-                                        <h6 class="card-title text-capitalize">
-                                            {{ $laptop->name }}
-                                            <span
-                                                class="{{ $laptop->condition == 'new' ? 'text-info' : 'text-secondary' }} fw-bold fs-6">
-                                                {{ $laptop->condition }}
-                                            </span>
-                                        </h6>
-                                    </a>
+                                    <h6 class="card-title text-capitalize">
+                                        {{ $laptop->name }}
+                                        <span
+                                            class="{{ $laptop->condition == 'new' ? 'text-info' : 'text-secondary' }} fw-bold fs-6">
+                                            {{ $laptop->condition }}
+                                        </span>
+                                    </h6>
                                     @if ($laptop->discount > 0)
                                         <p class="card-text text-primary fs-6">${{ $laptop->discount_price }} &nbsp;
                                             <span class="text-decoration-line-through">${{ $laptop->price }}</span>
@@ -64,7 +62,7 @@
                                     @endif
                                 </div>
                                 <!-- for rate modal -->
-                                <div class="modal fade" id="featuredModal{{ $laptop->id }}" tabindex="-1">
+                                <div class="modal fade" id="modal{{ $laptop->id }}" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -73,22 +71,32 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <select name="rating" class="form-select">
-                                                    <option value="1">1 Star</option>
-                                                    <option value="2">2 Stars</option>
-                                                    <option value="3">3 Stars</option>
-                                                    <option value="4">4 Stars</option>
-                                                    <option value="5">5 Stars</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary">
-                                                    Rate
-                                                </button>
-                                            </div>
+                                            <form class="editForm">
+                                                <div class="modal-body">
+                                                    <input type="hidden" class="laptopId" value="{{ $laptop->id }}">
+                                                    <select name="rating" class="form-select">
+                                                        <option value="1">1 Star</option>
+                                                        <option value="2">2 Stars</option>
+                                                        <option value="3">3 Stars</option>
+                                                        <option value="4">4 Stars</option>
+                                                        <option value="5">5 Stars</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    @guest
+                                                        <p>Please <a href="{{ route('login') }}">login</a> to rate this
+                                                            laptop!</p>
+                                                    @endguest
+
+                                                    @auth
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Rate
+                                                        </button>
+                                                    @endauth
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +126,7 @@
                                 @endif
                                 <div class="position-absolute top-50 start-50 translate-middle" id="detail-buttons">
                                     <button type="button" class="btn text-white bg-dark rounded-circle button-hover"
-                                        data-bs-toggle="modal" data-bs-target="#ratedModal{{ $laptop->id }}">
+                                        data-bs-toggle="modal" data-bs-target="#modal{{ $laptop->id }}">
                                         <i class="fa-solid fa-star"></i>
                                     </button>
                                     <a href="{{ route('shop.detail', $laptop->id) }}"
@@ -127,15 +135,13 @@
                                     </a>
                                 </div>
                                 <div class="card-body overlay" style="background: rgb(220, 231, 231);">
-                                    <a href="" class="text-decoration-none">
-                                        <h6 class="card-title text-capitalize">
-                                            {{ $laptop->name }}
-                                            <span
-                                                class="{{ $laptop->condition == 'new' ? 'text-info' : 'text-secondary' }} fw-bold fs-6">
-                                                {{ $laptop->condition }}
-                                            </span>
-                                        </h6>
-                                    </a>
+                                    <h6 class="card-title text-capitalize">
+                                        {{ $laptop->name }}
+                                        <span
+                                            class="{{ $laptop->condition == 'new' ? 'text-info' : 'text-secondary' }} fw-bold fs-6">
+                                            {{ $laptop->condition }}
+                                        </span>
+                                    </h6>
                                     @if ($laptop->discount > 0)
                                         <p class="card-text text-primary fs-6">${{ $laptop->discount_price }} &nbsp;
                                             <span class="text-decoration-line-through">${{ $laptop->price }}</span>
@@ -146,7 +152,7 @@
                                     @endif
                                 </div>
                                 <!-- for rate modal -->
-                                <div class="modal fade" id="ratedModal{{ $laptop->id }}" tabindex="-1">
+                                <div class="modal fade" id="modal{{ $laptop->id }}" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -155,22 +161,32 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <select name="rating" class="form-select">
-                                                    <option value="1">1 Star</option>
-                                                    <option value="2">2 Stars</option>
-                                                    <option value="3">3 Stars</option>
-                                                    <option value="4">4 Stars</option>
-                                                    <option value="5">5 Stars</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary">
-                                                    Rate
-                                                </button>
-                                            </div>
+                                            <form class="editForm">
+                                                <div class="modal-body">
+                                                    <input type="hidden" class="laptopId" value="{{ $laptop->id }}">
+                                                    <select name="rating" class="form-select">
+                                                        <option value="1">1 Star</option>
+                                                        <option value="2">2 Stars</option>
+                                                        <option value="3">3 Stars</option>
+                                                        <option value="4">4 Stars</option>
+                                                        <option value="5">5 Stars</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    @guest
+                                                        <p>Please <a href="{{ route('login') }}">login</a> to rate this
+                                                            laptop!</p>
+                                                    @endguest
+
+                                                    @auth
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Rate
+                                                        </button>
+                                                    @endauth
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -247,4 +263,43 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.editForm').submit(function(e) {
+                e.preventDefault();
+                let modalDiv = $(this).closest('.modal');
+                // get laptopId and rating and user_id
+                let laptopId = Number(modalDiv.find('.laptopId').val());
+                let rating = Number(modalDiv.find('select[name="rating"]').val());
+
+                $.ajax({
+                    type: 'get',
+                    url: '/shop/products/ratings',
+                    data: {
+                        'laptopId': laptopId,
+                        'rating': rating
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status == 'fail') {
+                            // rate fail
+                            // for hiding modal
+                            $(`#modal${laptopId}`).modal('hide');
+                            return swal('Sorry!', `You already rated this laptop!`,
+                                'warning');
+                        } else {
+                            // rate success
+                            // for hiding modal
+                            $(`#modal${laptopId}`).modal('hide');
+                            return swal('Thank you!', `You rated ${response.productName}.`,
+                                'success');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

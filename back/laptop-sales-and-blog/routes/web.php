@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAjaxController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
@@ -44,4 +45,8 @@ Route::middleware(['auth'])->group(function () {
         // for change product status with ajax
         Route::get('/change-product-status', [AdminAjaxController::class, 'changeStatus']);
     });
+
+    // User
+    // Shop Ajax
+    Route::get('/shop/products/ratings', [ShopAjaxController::class, 'rateProduct']);
 });
