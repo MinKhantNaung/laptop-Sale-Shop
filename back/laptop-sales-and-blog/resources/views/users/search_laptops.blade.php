@@ -103,11 +103,18 @@
                                                             </select>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-primary">
-                                                                Rate
-                                                            </button>
+                                                            @guest
+                                                                <p>Please <a href="{{ route('login') }}">login</a> to rate this
+                                                                    laptop!</p>
+                                                            @endguest
+
+                                                            @auth
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Rate
+                                                                </button>
+                                                            @endauth
                                                         </div>
                                                     </form>
                                                 </div>
