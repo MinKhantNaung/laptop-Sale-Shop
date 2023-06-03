@@ -76,6 +76,18 @@ class HomeController extends Controller
         return view('users.all_laptops', compact('brands', 'laptops'));
     }
 
+    // to search laptops by clicking brand
+    public function searchByBrand($id)
+    {
+        $brands = Brand::all();
+
+        $laptops = Product::where('brand_id', $id)
+            ->paginate(6);
+        $laptops->appends(request()->all());
+
+        return view('users.search_laptops', compact('brands', 'laptops'));
+    }
+
     // to search laptops in search bar
     public function searchLaptops(Request $request)
     {

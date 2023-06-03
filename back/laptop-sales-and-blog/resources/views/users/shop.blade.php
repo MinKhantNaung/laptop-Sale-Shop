@@ -17,7 +17,7 @@
                     <div class="row mb-sm-5 mt-sm-4">
                         @foreach ($brandsFilter as $brand)
                             <div class="col-lg-2 col-sm-3 col-4 mt-2">
-                                <a href="">
+                                <a href="{{ route('shop.searchBrand', $brand->id) }}">
                                     <div class="p-2 position-relative"
                                         style="height:120px; background: rgb(220, 231, 231);">
                                         <div class="position-absolute top-50 start-50 translate-middle">
