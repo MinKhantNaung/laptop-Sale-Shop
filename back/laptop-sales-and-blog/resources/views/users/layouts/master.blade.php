@@ -105,19 +105,24 @@
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle fw-bold px-4" href="#"
                                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <img @if (auth()->user()->gender == 'male') src="{{ asset('images/default_profile.webp') }}" @else src="{{ asset('images/default_female.jpg') }}" @endif
+                                                        <img @if (auth()->user()->image != null) src="{{ asset('storage/user_image/' . $user->image) }}"
+                                                            @elseif(auth()->user()->gender == 'male')
+                                                            src="{{ asset('images/default_profile.webp') }}"
+                                                            @else
+                                                            src="{{ asset('images/default_female.jpg') }}" @endif
                                                             style="width:50px;height:50px" alt="User Profile Image"
                                                             class="img-fluid object-fit-cover rounded-circle">
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-end">
                                                         <li>
-                                                            <a class="dropdown-item" href="#">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('userProfile.index') }}">
                                                                 <i class="fa-solid fa-user-tie"></i> &nbsp;
                                                                 {{ auth()->user()->name }}
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item" href="#">
+                                                            <a class="dropdown-item" href="{{ route('userPassword.change') }}">
                                                                 <i class="fa-solid fa-key"></i> &nbsp;
                                                                 Change Password
                                                             </a>

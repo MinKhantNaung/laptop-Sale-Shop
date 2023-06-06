@@ -1,6 +1,7 @@
-@extends('admin.layouts.master')
+@extends('users.layouts.master')
 
-@section('title', 'Admin Dashboard-Profile')
+@section('title', 'MM Laptops-Shop')
+
 @section('content')
     <div class="card shadow mb-4 col-12">
         {{-- alert messages --}}
@@ -31,17 +32,17 @@
             </h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('adminProfile.update') }}" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('userProfile.update') }}" enctype="multipart/form-data" method="POST">
                 @csrf
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="text-center mb-2">
-                            <img @if ($user->image != null) src="{{ asset('storage/admin_image/' . $user->image) }}"
-                            @elseif ($user->gender == 'male')
-                            src="{{ asset('images/default_profile.webp') }}"
-                            @else
-                            src="{{ asset('images/default_female.jpg') }}" @endif
+                            <img @if ($user->image != null) src="{{ asset('storage/user_image/' . $user->image) }}"
+                        @elseif ($user->gender == 'male')
+                        src="{{ asset('images/default_profile.webp') }}"
+                        @else
+                        src="{{ asset('images/default_female.jpg') }}" @endif
                                 alt="profile image" class="img-fluid object-fit-cover rounded-circle"
                                 style="width:200px;height:200px">
                         </div>
@@ -142,7 +143,7 @@
                         </table>
                     </div>
                     <div class="col-12 text-end">
-                        <a href="{{ route('adminProfile.index') }}" class="btn btn-sm btn-secondary mt-2">Cancel</a>
+                        <a href="{{ route('userProfile.index') }}" class="btn btn-sm btn-secondary mt-2">Cancel</a>
                         <button type="submit" class="btn btn-sm btn-info mt-2">
                             <i class="fa-solid fa-up-long"></i>
                             Update
