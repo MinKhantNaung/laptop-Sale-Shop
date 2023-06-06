@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class noAdmin
+class isUser
 {
     /**
      * Handle an incoming request.
@@ -18,10 +18,10 @@ class noAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->role == 'admin') {
-                return redirect()->route('brands.index');
+            if (Auth::user()->role == 'user') {
+                return $next($request);
             }
         }
-        return $next($request);
+        return back();
     }
 }

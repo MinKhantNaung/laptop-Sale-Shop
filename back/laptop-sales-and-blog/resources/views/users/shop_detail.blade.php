@@ -32,18 +32,26 @@
                 <p class="text-muted">
                     {!! $laptop->description !!}
                 </p>
+                <input type="hidden" id="currentLaptopId" value="{{ $laptop->id }}">
                 <div class="input-group bg-light d-flex align-items-center mt-3">
                     <button type="button" class="btn btn-white border-0 minus">
                         <i class="fa-solid fa-minus"></i>
                     </button>
-                    <input type="text" class="border-0 text-center quantity" style="width:50px;" value="1"
-                        min="1" disabled>
+                    <input type="text" id="quantity" class="border-0 text-center quantity" style="width:50px;"
+                        value="1" min="1" disabled>
                     <button type="button" class="btn btn-white border-0 plus">
                         <i class="fa-solid fa-plus"></i>
                     </button>
-                    <button type="button" class="btn btn-info text-white fw-bolder">
-                        ADD TO CART
-                    </button>
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-info text-white fw-bolder">
+                            ADD TO CART
+                        </a>
+                    @endguest
+                    @auth
+                        <button type="button" id="addToCart" class="btn btn-info text-white fw-bolder">
+                            ADD TO CART
+                        </button>
+                    @endauth
                     <button type="button" class="btn btn-sm btn-success ms-2" data-bs-toggle="modal"
                         data-bs-target="#modal{{ $laptop->id }}">
                         <i class="fa-solid fa-star text-warning"></i>
@@ -239,6 +247,28 @@
                             return swal('Thank you!', `You rated ${response.productName}.`,
                                 'success');
                         }
+                    }
+                })
+            })
+
+            // for add to cart
+            $('#addToCart').click(function(e) {
+                e.preventDefault();
+                let currentLaptopId = Number($('#currentLaptopId').val());
+                let quantity = Number($('#quantity').val());
+
+                $.ajax({
+                    type: 'get',
+                    url: '/shop/products/add-to-cart',
+                    data: {
+                        'currentLaptopid': currentLaptopId,
+                        'quantity': quantity
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        sessionStorage.setItem('successMessage', response.message);
+                        // Redirect to cart page
+                        window.location.href = '/shop/products/cart';
                     }
                 })
             })

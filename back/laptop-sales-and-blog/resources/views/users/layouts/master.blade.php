@@ -29,16 +29,44 @@
                             <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
                                 <div class="container">
                                     <a class="navbar-brand fw-bolder fs-3" href="#">MM-LAPTOPS</a>
-                                    <a href="" class="text-black fs-6 p-0 position-relative"
-                                        title="No items in the cart">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
-                                    </a>
-                                    <a href="" class="text-black fs-6 ps-2 ps-sm-0 ps-lg-5 position-relative"
-                                        title="No orders in the checkout">
-                                        <i class="fa-solid fa-basket-shopping"></i>
-                                        <span class="badge bg-info position-absolute top-0 rounded-circle">0</span>
-                                    </a>
+                                    {{-- cart and checkout --}}
+                                    @guest
+                                        <a href="{{ route('login') }}" class="text-black fs-6 p-0 position-relative"
+                                            title="No items in the cart">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </a>
+                                    @endguest
+                                    @auth
+                                        @php
+                                            $carts = App\Models\Shop\Cart::where('user_id', auth()->user()->id)->get();
+                                        @endphp
+                                        <a href="{{ route('shop.cartPage') }}" class="text-black fs-6 p-0 position-relative"
+                                            title="{{ $carts->count() == 0 ? 'No items in the cart' : '' }}">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            <span id="cartCount"
+                                                class="badge bg-info position-absolute top-0 rounded-circle">{{ $carts->count() }}</span>
+                                        </a>
+                                    @endauth
+                                    @guest
+                                        <a href="{{ route('login') }}"
+                                            class="text-black fs-6 ps-2 ps-sm-0 ps-lg-5 position-relative"
+                                            title="No orders in the checkout">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </a>
+                                    @endguest
+                                    @auth
+                                        @php
+                                            $orders = App\Models\Shop\Order::where('user_id', auth()->user()->id)->get();
+                                        @endphp
+                                        <a href="{{ route('shop.checkout') }}"
+                                            class="text-black fs-6 ps-2 ps-sm-0 ps-lg-5 position-relative"
+                                            title="{{ $orders->count() == 0 ? 'No orders in the checkout' : '' }}">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                            <span
+                                                class="badge bg-info position-absolute top-0 rounded-circle">{{ $orders->count() }}</span>
+                                        </a>
+                                    @endauth
+                                    {{-- cart and checkout --}}
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                         aria-label="Toggle navigation">

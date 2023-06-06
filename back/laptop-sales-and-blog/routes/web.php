@@ -6,6 +6,7 @@ use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\ShopController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,7 +24,8 @@ Route::get('/shop/search-filter', [HomeController::class, 'searchLaptops'])->nam
 Route::get('/shop/search-by-brand/{id}', [HomeController::class, 'searchByBrand'])->name('shop.searchBrand');
 
 Route::middleware(['auth'])->group(function () {
-    Route::group(['prefix' => 'admin'], function () {
+    // Admin
+    Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
         // Admin Profile
         Route::get('/profile', [AdminController::class, 'index'])->name('adminProfile.index');
         // for profile edit page
@@ -49,6 +51,20 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // User
-    // Shop Ajax
-    Route::get('/shop/products/ratings', [ShopAjaxController::class, 'rateProduct']);
+    Route::group(['prefix' => 'shop/products', 'middleware' => 'isUser'], function () {
+        // Shop Ajax
+        // for rating product with ajax
+        Route::get('/ratings', [ShopAjaxController::class, 'rateProduct']);
+        // for add to cart with ajax
+        Route::get('/add-to-cart', [ShopAjaxController::class, 'addToCart']);
+        // for delete cart product when cross btn in cart page
+        Route::get('/ajax/clear-current-product', [ShopAjaxController::class, 'clearCartProduct']);
+        // for add orderList after proceed to checkout
+        Route::get('/ajax/proceed-to-checkout', [ShopAjaxController::class, 'proceedCheckout']);
+
+        // Cart
+        Route::get('/cart', [ShopController::class, 'cartPage'])->name('shop.cartPage');
+        // Checkout
+        Route::get('/checkout', [ShopController::class, 'checkout'])->name('shop.checkout');
+    });
 });

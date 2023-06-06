@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('order_code');
             $table->decimal('total');
-            $table->integer('status'); // 0 -> pending, 1 -> success, 2 -> fail
+            $table->integer('status')->default(0); // 0 -> pending, 1 -> success, 2 -> fail
             $table->timestamps();
         });
     }

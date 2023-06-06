@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('noAdmin');
+        return $this->middleware('noAdmin');
     }
 
     // to welcome page or home page

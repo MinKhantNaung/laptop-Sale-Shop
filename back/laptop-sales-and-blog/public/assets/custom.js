@@ -17,7 +17,7 @@ $(document).ready(function () {
         }
     })
 
-    // for cart 
+    // for cart
     // Event handler for minus button click
     $('.minus-btn').click(function () {
         let row = $(this).closest('tr');
@@ -25,13 +25,13 @@ $(document).ready(function () {
         let currentQuantity = parseInt(quantityInput.val());
         // for decreae total
         let price = row.find('.price').text();
-        let priceNumber = parseInt(price.replace('$', '')); // Remove $
+        let priceNumber = parseFloat(price.replace('$', '')); // Remove $
         let total = row.find('#total');
 
         if (currentQuantity > 0) {
             quantityInput.val(currentQuantity - 1);
             // decrease total
-            total.text('$' + priceNumber * (currentQuantity - 1));
+            total.text('$' + (priceNumber * (currentQuantity - 1)).toFixed(2));
             finalCalculation();
         }
     });
@@ -43,13 +43,13 @@ $(document).ready(function () {
         let currentQuantity = parseInt(quantityInput.val());
         // for increase total
         let price = row.find('.price').text();
-        let priceNumber = parseInt(price.replace('$', '')); // Remove $
+        let priceNumber = parseFloat(price.replace('$', '')); // Remove $
         let total = row.find('#total');
 
         if (currentQuantity < 20) {
             quantityInput.val(currentQuantity + 1);
             // increase total
-            total.text('$' + priceNumber * (currentQuantity + 1));
+            total.text('$' + (priceNumber * (currentQuantity + 1)).toFixed(2));
             finalCalculation();
         }
     });
@@ -58,15 +58,17 @@ $(document).ready(function () {
         // for calculate cart total
         let subtotal = $('.subtotal');
         let shipping = $('.shipping');
-        const shippingCost = parseInt(shipping.text().replace('$', ''));
+        const shippingCost = parseFloat(shipping.text().replace('$', ''));
         let finalTotal = $('.final-total');
         // calculate subtotal and finaltotal
         let allTotalSum = 0;
         $('#dataTable tr').each(function (index, tr) {
-            allTotalSum += parseInt($(tr).find('#total').text().replace('$', ''));
+            allTotalSum += parseFloat($(tr).find('#total').text().replace('$', ''));
         })
-        subtotal.text('$' + allTotalSum);
-        finalTotal.text('$' + (allTotalSum + shippingCost));
+        subtotal.text('$' + allTotalSum.toFixed(2));
+        // for calculate final total
+        let calculateFinalTotal = parseFloat(allTotalSum.toFixed(2)) + shippingCost;
+        finalTotal.text('$' + calculateFinalTotal);
     }
 });
 
