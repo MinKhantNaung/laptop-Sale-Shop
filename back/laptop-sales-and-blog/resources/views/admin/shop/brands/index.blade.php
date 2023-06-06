@@ -88,7 +88,7 @@
                                                         class="btn btn-sm btn-info" title="Edit">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
-                                                    <button type="submit" onclick="return confirm('Sure to delete?')"
+                                                    <button type="submit" onclick="return confirm('Deleting this category will also delete the associated products. Are you sure you want to proceed?')"
                                                         class="btn btn-sm btn-danger" title="Delete">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </button>

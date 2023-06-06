@@ -85,6 +85,7 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         Storage::delete('public/brand_images/' . $brand->image);
+        $brand->products()->delete();
         $brand->delete();
 
         return back()->with('danger', 'Brand deleted!');

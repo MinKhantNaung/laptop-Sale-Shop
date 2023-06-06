@@ -105,7 +105,7 @@
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle fw-bold px-4" href="#"
                                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <img @if (auth()->user()->image != null) src="{{ asset('storage/user_image/' . $user->image) }}"
+                                                        <img @if (auth()->user()->image != null) src="{{ asset('storage/user_image/' . auth()->user()->image) }}"
                                                             @elseif(auth()->user()->gender == 'male')
                                                             src="{{ asset('images/default_profile.webp') }}"
                                                             @else
