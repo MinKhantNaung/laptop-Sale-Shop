@@ -69,7 +69,7 @@
 
             <!-- Nav Item - Orders -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.orders') }}">
                     <i class="fa-solid fa-money-bill-wave"></i>
                     <span>Orders</span>
                 </a>

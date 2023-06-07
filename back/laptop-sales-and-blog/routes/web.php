@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAjaxController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\ProfileController;
@@ -46,9 +47,18 @@ Route::middleware(['auth'])->group(function () {
         // Products
         Route::resource('products', ProductController::class);
 
+        // Orders
+        Route::get('/orders', [OrderController::class, 'orders'])->name('admin.orders');
+        // for order details
+        Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('admin.orderDetail');
+        // for delete order
+        Route::post('/orders/delete/{id}', [OrderController::class, 'delete'])->name('admin.orderDelete');
+
         // Ajax
         // for change product status with ajax
         Route::get('/change-product-status', [AdminAjaxController::class, 'changeStatus']);
+        // for change order status with ajax
+        Route::get('/change-order-status', [AdminAjaxController::class, 'orderStatus']);
     });
 
     // User
@@ -81,7 +91,7 @@ Route::middleware(['auth'])->group(function () {
 
         // for password change page
         Route::get('/password/change', [ProfileController::class, 'passwordChange'])->name('userPassword.change');
-        // for password update 
+        // for password update
         Route::post('/password/update', [ProfileController::class, 'passwordUpdate'])->name('userPassword.update');
     });
 });
