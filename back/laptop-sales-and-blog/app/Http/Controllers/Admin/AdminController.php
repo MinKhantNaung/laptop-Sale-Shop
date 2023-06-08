@@ -89,4 +89,60 @@ class AdminController extends Controller
             return back()->with('error', "The old password is incorrect!");
         }
     }
+
+    // to users list page
+    public function usersList()
+    {
+        $users = User::when(request('search'), function ($query) {
+            $query->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('email', 'like', '%' . request('search') . '%');
+        })
+            ->orderBy('id', 'desc')->paginate(10);
+
+        $users->appends(request()->all());
+        return view('admin.users.list', compact('users'));
+    }
+
+    // to admins list with role admin
+    public function adminsList() {
+        $users = User::where('role', 'admin')->paginate(10);
+        return view('admin.users.list', compact('users'));
+    }
+
+    // to users list with role user
+    public function normalUsers() {
+        $users = User::where('role', 'user')->paginate(10);
+        return view('admin.users.list', compact('users'));
+    }
+
+    // to create user page by admin
+    public function createUserPage() {
+        return view('admin.users.createUser');
+    }
+
+    // to create user by admin
+    public function createUser(Request $request) {
+        $request->validate([
+            'name' => 'required|max:30',
+            'email' => 'required|unique:users,email',
+            'role' => 'required',
+            'phone' => 'required|min:4|max:15',
+            'address' => 'required',
+            'gender' => 'required',
+            'password' => 'required|string|min:8|max:20|same:confirmPassword',
+            'confirmPassword' => 'required|string|min:8|max:20|same:password',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('admin.usersList')->with('success', 'You created a user successfully!');
+    }
 }

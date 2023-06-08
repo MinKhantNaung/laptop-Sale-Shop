@@ -106,7 +106,7 @@
 
             <!-- Nav Item - Categories -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.usersList') }}">
                     <i class="fa-solid fa-users-gear"></i>
                     <span>Users</span>
                 </a>
@@ -114,6 +114,19 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Contact
+            </div>
+
+            <!-- Nav Item - Categories -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

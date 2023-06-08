@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
         // for password update
         Route::post('/password/update', [AdminController::class, 'passwordUpdate'])->name('adminPassword.update');
 
+        // Shop
         // Brands
         Route::resource('brands', BrandController::class);
 
@@ -54,11 +55,26 @@ Route::middleware(['auth'])->group(function () {
         // for delete order
         Route::post('/orders/delete/{id}', [OrderController::class, 'delete'])->name('admin.orderDelete');
 
-        // Ajax
+        // Shop Ajax
         // for change product status with ajax
         Route::get('/change-product-status', [AdminAjaxController::class, 'changeStatus']);
         // for change order status with ajax
         Route::get('/change-order-status', [AdminAjaxController::class, 'orderStatus']);
+
+        // Manage Users
+        Route::get('/users/list', [AdminController::class, 'usersList'])->name('admin.usersList');
+        // for admins list with role admin
+        Route::get('/users/with-admin-role', [AdminController::class, 'adminsList'])->name('admin.adminsList');
+        // for users list with role user
+        Route::get('/users/with-user-role', [AdminController::class, 'normalUsers'])->name('admin.normalUsers');
+        // for create user page by admin
+        Route::get('/users/create', [AdminController::class, 'createUserPage'])->name('admin.createUserPage');
+        // for create user by admin
+        Route::post('/users/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
+
+        // Users Ajax
+        // for change role with ajax
+        Route::get('/users/change-role', [AdminAjaxController::class, 'changeRole'])->name('admin.changeRole');
     });
 
     // User

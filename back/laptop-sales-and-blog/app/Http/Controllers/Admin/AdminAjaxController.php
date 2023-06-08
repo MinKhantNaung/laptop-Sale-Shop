@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Shop\Order;
 use App\Models\Shop\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminAjaxController extends Controller
@@ -30,6 +31,18 @@ class AdminAjaxController extends Controller
         $order = Order::find($request->orderId);
         $order->update([
             'status' => $request->status
+        ]);
+    }
+
+    // to change role with ajax
+    public function changeRole(Request $request) {
+        $user = User::find($request->userId);
+        $user->update([
+            'role' => $request->role,
+        ]);
+
+        return response()->json([
+            'message' => 'success',
         ]);
     }
 }
