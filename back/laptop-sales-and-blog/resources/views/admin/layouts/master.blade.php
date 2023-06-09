@@ -51,7 +51,7 @@
                 Shop
             </div>
 
-            <!-- Nav Item - Categories -->
+            <!-- Nav Item - Brands -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('brands.index') }}">
                     <i class="fa-solid fa-grip"></i>
@@ -104,7 +104,7 @@
                 All Users
             </div>
 
-            <!-- Nav Item - Categories -->
+            <!-- Nav Item - Users -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.usersList') }}">
                     <i class="fa-solid fa-users-gear"></i>
@@ -120,11 +120,19 @@
                 Contact
             </div>
 
-            <!-- Nav Item - Categories -->
+            <!-- Nav Item - Contact -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.contact') }}">
                     <i class="fa-solid fa-building"></i>
                     <span>Contact</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.messages') }}">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messages</span>
                 </a>
             </li>
 

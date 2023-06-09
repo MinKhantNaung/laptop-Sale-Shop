@@ -1,17 +1,17 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminAjaxController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\User\ContactAjaxController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\ShopController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\ShopAjaxController;
+use App\Http\Controllers\Admin\AdminAjaxController;
+use App\Http\Controllers\User\ContactAjaxController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // for shop page
@@ -79,6 +79,13 @@ Route::middleware(['auth'])->group(function () {
         // Users Ajax
         // for change role with ajax
         Route::get('/users/change-role', [AdminAjaxController::class, 'changeRole'])->name('admin.changeRole');
+
+        // Contact
+        Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact');
+        // Messages
+        Route::get('/contact/messages', [ContactController::class, 'viewMessages'])->name('admin.messages');
+        // to delete messages
+        Route::post('/contact/messages/delete/{id}', [ContactController::class, 'deleteMessage'])->name('admin.deleteMessage');
     });
 
     // User

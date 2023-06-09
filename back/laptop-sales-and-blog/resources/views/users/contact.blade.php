@@ -35,8 +35,8 @@
             </div>
         </div>
         <!-- Map Picker Start -->
-        <input type="number" class="lat" value="21.976318" />
-        <input type="nummber" class="long" value="96.091253">
+        <input type="number" class="lat" value="21.976318" disabled />
+        <input type="nummber" class="long" value="96.091253" disabled>
         <div id="myMap" class="w-100"></div>
         <!-- Map Picker End -->
         <!-- Message section -->
@@ -103,11 +103,11 @@
                 // marker point
                 points: [lati, long],
                 // custom icon HTML
-                icon: '<img src="https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg">',
+                icon: '<i class="fa-solid fa-location-dot text-success" style="font-size:50px"></i>',
                 // initial zoom level
                 zoom: 15,
                 // zoom level at which the layer is visible
-                limitZoom: 18,
+                limitZoom: 8,
             });
             // Map Picker end
 
