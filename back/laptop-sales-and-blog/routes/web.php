@@ -6,7 +6,9 @@ use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\ContactAjaxController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,8 @@ Route::get('/shop/all-laptops', [HomeController::class, 'allLaptops'])->name('sh
 Route::get('/shop/search-filter', [HomeController::class, 'searchLaptops'])->name('shop.search');
 // for search laptops by clicking brand
 Route::get('/shop/search-by-brand/{id}', [HomeController::class, 'searchByBrand'])->name('shop.searchBrand');
+// for contact page
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::middleware(['auth'])->group(function () {
     // Admin
@@ -78,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // User
+    // Shop
     Route::group(['prefix' => 'shop/products', 'middleware' => 'isUser'], function () {
         // Shop Ajax
         // for rating product with ajax
@@ -110,4 +115,11 @@ Route::middleware(['auth'])->group(function () {
         // for password update
         Route::post('/password/update', [ProfileController::class, 'passwordUpdate'])->name('userPassword.update');
     });
+
+    // User
+    // for storing message from contact form with ajax
+    Route::get('/contact-message', [ContactAjaxController::class, 'messageAccept'])->name('contact.messageAccept');
 });
+
+
+

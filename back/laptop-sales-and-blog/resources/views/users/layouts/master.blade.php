@@ -85,7 +85,7 @@
                                                 <a class="nav-link fw-bold px-4" href="#">BLOG</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link fw-bold px-4" href="">CONTACT</a>
+                                                <a class="nav-link fw-bold px-4" href="{{ route('contact') }}">CONTACT</a>
                                             </li>
                                         </ul>
                                         <!-- Guest -->

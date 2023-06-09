@@ -149,4 +149,12 @@ class HomeController extends Controller
 
         return view('users.search_laptops', compact('brands', 'laptops'));
     }
+
+    // Contact
+    // to contact page
+    public function contact() {
+        $brands = Brand::all();
+
+        return view('users.contact', compact('brands'));
+    }
 }
