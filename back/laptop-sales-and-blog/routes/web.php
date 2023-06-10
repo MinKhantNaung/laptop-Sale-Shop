@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\AdminAjaxController;
 use App\Http\Controllers\User\ContactAjaxController;
+use App\Models\Contact;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // for shop page
@@ -82,9 +83,17 @@ Route::middleware(['auth'])->group(function () {
 
         // Contact
         Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact');
+        // for create contact page
+        Route::get('/contact/create', [ContactController::class, 'createContactPage'])->name('admin.createContactPage');
+        // for create contact
+        Route::post('/contact/create', [ContactController::class, 'createContact'])->name('admin.createContact');
+        // for edit contact page
+        Route::get('/contact/edit/{id}', [ContactController::class, 'editContact'])->name('admin.editContact');
+        // for update contact 
+        Route::post('/contact/update/{id}', [ContactController::class, 'updateContact'])->name('admin.updateContact');
         // Messages
         Route::get('/contact/messages', [ContactController::class, 'viewMessages'])->name('admin.messages');
-        // to delete messages
+        // for delete messages
         Route::post('/contact/messages/delete/{id}', [ContactController::class, 'deleteMessage'])->name('admin.deleteMessage');
     });
 

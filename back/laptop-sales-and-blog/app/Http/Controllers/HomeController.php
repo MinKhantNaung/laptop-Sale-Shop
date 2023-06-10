@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Shop\Brand;
 use App\Models\Shop\Product;
 use Illuminate\Http\Request;
@@ -154,7 +155,8 @@ class HomeController extends Controller
     // to contact page
     public function contact() {
         $brands = Brand::all();
+        $contacts = Contact::all();
 
-        return view('users.contact', compact('brands'));
+        return view('users.contact', compact('brands', 'contacts'));
     }
 }

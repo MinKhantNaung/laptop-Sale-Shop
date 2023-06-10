@@ -12,7 +12,7 @@ class ContactAjaxController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'isUser']);
     }
 
     // to storing message from contact form with ajax

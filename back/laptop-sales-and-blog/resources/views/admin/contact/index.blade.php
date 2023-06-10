@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Admin Dashboard-Messages')
+@section('title', 'Admin Dashboard-Contact')
 
 @section('style')
     <!-- Map Picker leaflet.css -->
@@ -50,40 +50,55 @@
                 {{-- alert messages end --}}
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Our Contact
-                        <a href="" class="btn btn-info float-end">
-                            <i class="fa-solid fa-location-crosshairs me-1"></i>Create
-                        </a>
+                        @if ($contacts->count() > 0)
+                            @foreach ($contacts as $contact)
+                                <a href="{{ route('admin.editContact', $contact->id) }}" class="btn btn-warning float-end">
+                                    <i class="fa-solid fa-marker me-1"></i></i>Edit
+                                </a>
+                            @endforeach
+                        @else
+                            <a href="{{ route('admin.createContact') }}" class="btn btn-info float-end">
+                                <i class="fa-solid fa-location-crosshairs me-1"></i>Create
+                            </a>
+                        @endif
                     </h6>
                 </div>
                 <div class="card-body">
-                    <!-- contact section -->
-                    <div class="row my-3">
-                        <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                            <i class="fa-solid fa-phone text-info fs-2"></i> <br>
-                            <h4 class="fw-bold mt-3">Phone</h4>
-                            <p>09 258 128 856</p>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                            <i class="fa-solid fa-location-dot text-info fs-2"></i> <br>
-                            <h4 class="fw-bold mt-3">Address</h4>
-                            <p>63-69 road, Mandalay</p>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                            <i class="fa-regular fa-clock text-info fs-2"></i> <br>
-                            <h4 class="fw-bold mt-3">Open Time</h4>
-                            <p>10:00 am to 20:00 am</p>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                            <i class="fa-regular fa-envelope text-info fs-2"></i> <br>
-                            <h4 class="fw-bold mt-3">Email</h4>
-                            <p>hello@gmail.com</p>
-                        </div>
-                    </div>
-                    <!-- Map Picker Start -->
-                    <input type="number" class="lat" value="21.976318" disabled />
-                    <input type="nummber" class="long" value="96.091253" disabled>
-                    <div id="myMap" class="w-100"></div>
-                    <!-- Map Picker End -->
+                    @if ($contacts->count() > 0)
+                        @foreach ($contacts as $contact)
+                            <!-- contact section -->
+                            <div class="row my-3">
+                                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                                    <i class="fa-solid fa-phone text-info fs-2"></i> <br>
+                                    <h4 class="fw-bold mt-3">Phone</h4>
+                                    <p>{{ $contact->phone }}</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                                    <i class="fa-solid fa-location-dot text-info fs-2"></i> <br>
+                                    <h4 class="fw-bold mt-3">Address</h4>
+                                    <p>{{ $contact->address }}</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                                    <i class="fa-regular fa-clock text-info fs-2"></i> <br>
+                                    <h4 class="fw-bold mt-3">Open Time</h4>
+                                    <p>{{ date('h:i a', strtotime($contact->open_time)) }} to
+                                        {{ date('h:i a', strtotime($contact->close_time)) }}</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                                    <i class="fa-regular fa-envelope text-info fs-2"></i> <br>
+                                    <h4 class="fw-bold mt-3">Email</h4>
+                                    <p>{{ $contact->email }}</p>
+                                </div>
+                            </div>
+                            <!-- Map Picker Start -->
+                            <input type="number" class="lat" value="{{ $contact->latitude }}" disabled />
+                            <input type="nummber" class="long" value="{{ $contact->longitude }}" disabled>
+                            <div id="myMap" class="w-100"></div>
+                            <!-- Map Picker End -->
+                        @endforeach
+                    @else
+                        <h1 class="text-center text-warning my-5">No contacts have been created yet.</h1>
+                    @endif
                 </div>
             </div>
         </div>

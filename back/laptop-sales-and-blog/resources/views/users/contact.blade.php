@@ -11,34 +11,37 @@
 
 @section('content')
     <div class="col-12 my-4">
-        <!-- contact section -->
-        <div class="row my-3">
-            <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                <i class="fa-solid fa-phone text-info fs-2"></i> <br>
-                <h4 class="fw-bold mt-3">Phone</h4>
-                <p>09 258 128 856</p>
+        @foreach ($contacts as $contact)
+            <!-- contact section -->
+            <div class="row my-3">
+                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                    <i class="fa-solid fa-phone text-info fs-2"></i> <br>
+                    <h4 class="fw-bold mt-3">Phone</h4>
+                    <p>{{ $contact->phone }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                    <i class="fa-solid fa-location-dot text-info fs-2"></i> <br>
+                    <h4 class="fw-bold mt-3">Address</h4>
+                    <p>{{ $contact->address }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                    <i class="fa-regular fa-clock text-info fs-2"></i> <br>
+                    <h4 class="fw-bold mt-3">Open Time</h4>
+                    <p>{{ date('h:i a', strtotime($contact->open_time)) }} to
+                        {{ date('h:i a', strtotime($contact->close_time)) }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center my-3">
+                    <i class="fa-regular fa-envelope text-info fs-2"></i> <br>
+                    <h4 class="fw-bold mt-3">Email</h4>
+                    <p>{{ $contact->email }}</p>
+                </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                <i class="fa-solid fa-location-dot text-info fs-2"></i> <br>
-                <h4 class="fw-bold mt-3">Address</h4>
-                <p>63-69 road, Mandalay</p>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                <i class="fa-regular fa-clock text-info fs-2"></i> <br>
-                <h4 class="fw-bold mt-3">Open Time</h4>
-                <p>10:00 am to 20:00 am</p>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 text-center my-3">
-                <i class="fa-regular fa-envelope text-info fs-2"></i> <br>
-                <h4 class="fw-bold mt-3">Email</h4>
-                <p>hello@gmail.com</p>
-            </div>
-        </div>
-        <!-- Map Picker Start -->
-        <input type="number" class="lat" value="21.976318" disabled />
-        <input type="nummber" class="long" value="96.091253" disabled>
-        <div id="myMap" class="w-100"></div>
-        <!-- Map Picker End -->
+            <!-- Map Picker Start -->
+            <input type="number" class="lat" value="{{ $contact->latitude }}" disabled />
+            <input type="nummber" class="long" value="{{ $contact->longitude }}" disabled>
+            <div id="myMap" class="w-100"></div>
+            <!-- Map Picker End -->
+        @endforeach
         <!-- Message section -->
         <div class="row my-3">
             <div class="col-md-10 offset-md-1 mt-sm-0 mt-5 mb-5">
@@ -135,7 +138,7 @@
                     success: function(response) {
                         // show error messages start
                         if (response.message == 'error') {
-                            if(response.error.name) {
+                            if (response.error.name) {
                                 nameError.text(`${response.error.name}`);
                                 name.addClass('is-invalid');
                             } else {
@@ -149,7 +152,7 @@
                                 emailError.text('');
                                 email.removeClass('is-invalid');
                             }
-                            if(response.error.message) {
+                            if (response.error.message) {
                                 messageError.text(`${response.error.message}`);
                                 message.addClass('is-invalid');
                             } else {
@@ -170,6 +173,13 @@
                         } else {
                             // success
                             email.removeClass('is-invalid');
+                            name.removeClass('is-invalid');
+                            message.removeClass('is-invalid');
+                            // not show error messages
+                            emailError.text('');
+                            nameError.text('');
+                            messageError.text('');
+
                             $('#contactForm')[0].reset();
                             return swal('Thank You', `${response.message}`, 'success');
                         }
