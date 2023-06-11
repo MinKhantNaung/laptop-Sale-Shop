@@ -82,7 +82,7 @@
                                                 <a class="nav-link fw-bold px-4" href="{{ route('shop') }}">SHOP</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link fw-bold px-4" href="#">BLOG</a>
+                                                <a class="nav-link fw-bold px-4" href="{{ route('blog') }}">BLOG</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link fw-bold px-4" href="{{ route('contact') }}">CONTACT</a>

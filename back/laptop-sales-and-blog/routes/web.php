@@ -31,6 +31,12 @@ Route::get('/shop/search-filter', [HomeController::class, 'searchLaptops'])->nam
 Route::get('/shop/search-by-brand/{id}', [HomeController::class, 'searchByBrand'])->name('shop.searchBrand');
 // for contact page
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+// for blog page
+Route::get('/blog/posts', [HomeController::class, 'blog'])->name('blog');
+// for search posts by category
+Route::get('/blog/posts/search-by-category/{id}', [HomeController::class, 'searchByCategory'])->name('blog.categorySearch');
+// for search posts with input
+Route::get('/blog/posts/search-by', [HomeController::class, 'searchPosts'])->name('blog.search');
 
 Route::middleware(['auth'])->group(function () {
     // Admin

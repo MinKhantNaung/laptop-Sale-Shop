@@ -205,60 +205,20 @@
                 <h1 class="fw-bolder text-center mb-5 border-bottom border-3 pb-3">From The Blog
                 </h1>
                 <div class="row mt-sm-4">
+                    @foreach($posts as $post)
                     <div class="col-md-4 col-sm-6">
                         <a href="" class="text-decoration-none">
-                            <img src="images/laptop_illu.webp" alt="post image"
+                            <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
                                 class="w-100 img-fluid object-fit-cover border">
                             <p class="text-muted mt-1">
                                 <i class="fa-regular fa-calendar"></i>
-                                May 4, 2019 &nbsp; &nbsp;
-                                <i class="fa-regular fa-comment pe-1"></i>5
+                                {{ $post->updated_at->format('M d, Y') }} &nbsp; &nbsp;
+                                <i class="fa-regular fa-comment pe-1"></i>{{ $post->comments_count }}
                             </p>
-                            <h5 class="text-capitalize text-black fw-bolder">How to train your
-                                dragon</h5>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur
-                                Lorem
-                                ipsum dolor sit amet
-                                consectetur
-                            </p>
+                            <h5 class="text-capitalize text-black fw-bolder">{{ $post->title }}</h5>
                         </a>
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="" class="text-decoration-none">
-                            <img src="images/laptop_illu.webp" alt="post image"
-                                class="w-100 img-fluid object-fit-cover border">
-                            <p class="text-muted mt-1">
-                                <i class="fa-regular fa-calendar"></i>
-                                May 4, 2019 &nbsp; &nbsp;
-                                <i class="fa-regular fa-comment pe-1"></i>5
-                            </p>
-                            <h5 class="text-capitalize text-black fw-bolder">How to train your
-                                dragon</h5>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur
-                                Lorem
-                                ipsum dolor sit amet
-                                consectetur
-                            </p>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="" class="text-decoration-none">
-                            <img src="images/laptop_illu.webp" alt="post image"
-                                class="w-100 img-fluid object-fit-cover border">
-                            <p class="text-muted mt-1">
-                                <i class="fa-regular fa-calendar"></i>
-                                May 4, 2019 &nbsp; &nbsp;
-                                <i class="fa-regular fa-comment pe-1"></i>5
-                            </p>
-                            <h5 class="text-capitalize text-black fw-bolder">How to train your
-                                dragon</h5>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur
-                                Lorem
-                                ipsum dolor sit amet
-                                consectetur
-                            </p>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

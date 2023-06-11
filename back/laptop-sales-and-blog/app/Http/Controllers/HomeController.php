@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog\Category;
 use App\Models\Contact;
+use App\Models\Blog\Post;
 use App\Models\Shop\Brand;
 use App\Models\Shop\Product;
+use function Ramsey\Uuid\v1;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-use function Ramsey\Uuid\v1;
 
 class HomeController extends Controller
 {
@@ -32,8 +34,13 @@ class HomeController extends Controller
             ->orderBy('average_rating', 'desc')
             ->take(4)
             ->get();
+        // posts from blog that have most comments
+        $posts = Post::withCount('comments')
+                ->orderBy('comments_count', 'desc')
+                ->take(3)
+                ->get();
 
-        return view('users.welcome', compact('featured_laptops', 'rate_laptops', 'brands'));
+        return view('users.welcome', compact('featured_laptops', 'rate_laptops', 'brands', 'posts'));
     }
 
     // to shop page
@@ -158,5 +165,44 @@ class HomeController extends Controller
         $contacts = Contact::all();
 
         return view('users.contact', compact('brands', 'contacts'));
+    }
+
+    // Blog
+    // to blogs page
+    public function blog() {
+        $brands = Brand::all();
+        $categories = Category::all();
+        $posts = Post::paginate(4);
+        $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
+
+        return view('users.blog', compact('brands', 'categories', 'posts', 'recentPosts'));
+    }
+
+    // to search posts by category
+    public function searchByCategory($id) {
+        $brands = Brand::all();
+        $categories = Category::all();
+        $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
+        $posts = Post::where('category_id', $id)->paginate(4);
+        $posts->appends(request()->all());
+
+        return view('users.blog', compact('brands', 'categories', 'posts', 'recentPosts'));
+    }
+
+    // to search posts with input
+    public function searchPosts() {
+        $brands = Brand::all();
+        $categories = Category::all();
+        $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
+        // filter search
+        $posts = Post::when(request('search'), function ($query) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('content', 'like', '%' . request('search') . '%');
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(4);
+        $posts->appends(request()->all());
+
+        return view('users.blog', compact('brands', 'categories', 'posts', 'recentPosts'));
     }
 }
