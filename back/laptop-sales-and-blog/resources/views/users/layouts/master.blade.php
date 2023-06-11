@@ -211,16 +211,16 @@
                                 <div class="text-muted">hello@minnaungweb.com</div>
                                 <div class="text-muted">+95 -258138866</div>
                                 <div class="mt-1">
-                                    <a href=""
+                                    <a href="#"
                                         class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
                                             class="fa-brands fa-facebook-f"></i></a>
-                                    <a href=""
+                                    <a href="#"
                                         class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
                                             class="fa-brands fa-instagram"></i></a>
-                                    <a href=""
+                                    <a href="#"
                                         class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
                                             class="fa-brands fa-telegram"></i></a>
-                                    <a href=""
+                                    <a href="#"
                                         class="btn btn-sm text-black rounded-circle bg-white me-1 link-hover"><i
                                             class="fa-brands fa-twitter"></i></a>
                                 </div>

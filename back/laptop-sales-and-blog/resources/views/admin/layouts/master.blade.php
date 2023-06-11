@@ -82,7 +82,7 @@
 
             <!-- Nav Item - Categories -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.categories') }}">
                     <i class="fa-solid fa-tags"></i>
                     <span>Categories</span>
                 </a>

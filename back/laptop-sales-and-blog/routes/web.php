@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\AdminAjaxController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\User\ContactAjaxController;
 use App\Models\Contact;
 
@@ -66,6 +67,22 @@ Route::middleware(['auth'])->group(function () {
         // for change order status with ajax
         Route::get('/change-order-status', [AdminAjaxController::class, 'orderStatus']);
 
+        // Blog
+        // Categories
+        Route::group(['prefix' => 'categories'], function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('admin.categories');
+            // for category create page
+            Route::get('/create', [CategoryController::class, 'createPage'])->name('admin.categoryCreatePage');
+            // for create category
+            Route::post('/create', [CategoryController::class, 'create'])->name('admin.categoryCreate');
+            // for category edit page
+            Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('admin.categoryEdit');
+            // for category update
+            Route::post('/update/{id}', [CategoryController::class, 'update'])->name('admin.categoryUpdate');
+            // for delete category
+            Route::post('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categoryDelete');
+        });
+
         // Manage Users
         Route::get('/users/list', [AdminController::class, 'usersList'])->name('admin.usersList');
         // for admins list with role admin
@@ -82,19 +99,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users/change-role', [AdminAjaxController::class, 'changeRole'])->name('admin.changeRole');
 
         // Contact
-        Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact');
-        // for create contact page
-        Route::get('/contact/create', [ContactController::class, 'createContactPage'])->name('admin.createContactPage');
-        // for create contact
-        Route::post('/contact/create', [ContactController::class, 'createContact'])->name('admin.createContact');
-        // for edit contact page
-        Route::get('/contact/edit/{id}', [ContactController::class, 'editContact'])->name('admin.editContact');
-        // for update contact 
-        Route::post('/contact/update/{id}', [ContactController::class, 'updateContact'])->name('admin.updateContact');
-        // Messages
-        Route::get('/contact/messages', [ContactController::class, 'viewMessages'])->name('admin.messages');
-        // for delete messages
-        Route::post('/contact/messages/delete/{id}', [ContactController::class, 'deleteMessage'])->name('admin.deleteMessage');
+        Route::group(['prefix' => 'contact'], function () {
+            Route::get('/', [ContactController::class, 'index'])->name('admin.contact');
+            // for create contact page
+            Route::get('/create', [ContactController::class, 'createContactPage'])->name('admin.createContactPage');
+            // for create contact
+            Route::post('/create', [ContactController::class, 'createContact'])->name('admin.createContact');
+            // for edit contact page
+            Route::get('/edit/{id}', [ContactController::class, 'editContact'])->name('admin.editContact');
+            // for update contact
+            Route::post('/update/{id}', [ContactController::class, 'updateContact'])->name('admin.updateContact');
+            // Messages
+            Route::get('/messages', [ContactController::class, 'viewMessages'])->name('admin.messages');
+            // for delete messages
+            Route::post('/messages/delete/{id}', [ContactController::class, 'deleteMessage'])->name('admin.deleteMessage');
+        });
     });
 
     // User
