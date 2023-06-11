@@ -1,5 +1,3 @@
-
-
 # Laptop Sale and Blog
 
 I started this project on May 21, 2023 and have not finished it yet. I am still in the process of continuously writing it.
@@ -16,5 +14,8 @@ I want to write this features-
 - before proceed to checkout, order products must not be empty.
 - quantity for each order product must be greater than '0'.
 
+## Finished
+
+- Only Blog system remains (Other features finished)
 
 
