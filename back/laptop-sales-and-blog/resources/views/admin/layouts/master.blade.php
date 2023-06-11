@@ -90,7 +90,7 @@
 
             <!-- Nav Item - Posts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.posts') }}">
                     <i class="fa-solid fa-pen-clip"></i>
                     <span>Posts</span>
                 </a>

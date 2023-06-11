@@ -16,16 +16,20 @@ class CategoryController extends Controller
         })
             ->orderBy('id', 'desc')->paginate(6);
 
+        $categories->appends(request()->all());
+
         return view('admin.blog.categories.index', compact('categories'));
     }
 
     // to category create page
-    public function createPage() {
+    public function createPage()
+    {
         return view('admin.blog.categories.create');
     }
 
     // to create category
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $request->validate([
             'name' => 'required|min:2|max:30',
         ]);
@@ -38,13 +42,15 @@ class CategoryController extends Controller
     }
 
     // to category edit page
-    public function edit($id) {
+    public function edit($id)
+    {
         $category = Category::find($id);
         return view('admin.blog.categories.edit', compact('category'));
     }
 
     // to update category
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'name' => 'required|min:2|max:30',
         ]);
@@ -57,7 +63,8 @@ class CategoryController extends Controller
     }
 
     // to delete category
-    public function delete($id) {
+    public function delete($id)
+    {
         $category = Category::find($id);
         $category->posts()->delete();
         $category->delete();

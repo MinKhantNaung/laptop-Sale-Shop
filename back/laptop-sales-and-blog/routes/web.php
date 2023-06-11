@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\AdminAjaxController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\User\ContactAjaxController;
 use App\Models\Contact;
 
@@ -81,6 +82,25 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [CategoryController::class, 'update'])->name('admin.categoryUpdate');
             // for delete category
             Route::post('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categoryDelete');
+        });
+
+        // Blog
+        // Posts
+        Route::group(['prefix' => 'posts'], function() {
+            Route::get('/', [PostController::class, 'index'])->name('admin.posts');
+            // for post create page
+            Route::get('/create', [PostController::class, 'createPage'])->name('admin.postCreatePage');
+            // for create post
+            Route::post('/create', [PostController::class, 'create'])->name('admin.postCreate');
+            // for post edit page
+            Route::get('/edit/{id}', [PostController::class, 'edit'])->name('admin.postEdit');
+            // for update post
+            Route::post('/update/{id}', [PostController::class, 'update'])->name('admin.postUpdate');
+            // for delete post
+            Route::post('/delete/{id}', [PostController::class, 'delete'])->name('admin.postDelete');
+
+            // Post Comments
+            Route::get('/{id}/comments', [PostController::class, 'comments'])->name('admin.postComments');
         });
 
         // Manage Users

@@ -41,7 +41,7 @@
                 @endif
                 {{-- alert messages end --}}
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">All Brands
+                    <h6 class="m-0 font-weight-bold text-primary">{{ $brands->count() }} Brands
                         <div class="float-end">
                             <form action="{{ route('brands.index') }}" method="GET">
                                 @csrf
