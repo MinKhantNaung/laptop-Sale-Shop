@@ -7,6 +7,8 @@ use App\Models\Contact;
 use App\Models\Blog\Post;
 use App\Models\Shop\Brand;
 use App\Models\Shop\Product;
+use App\Models\User;
+
 use function Ramsey\Uuid\v1;
 
 use Illuminate\Http\Request;
@@ -204,5 +206,15 @@ class HomeController extends Controller
         $posts->appends(request()->all());
 
         return view('users.blog', compact('brands', 'categories', 'posts', 'recentPosts'));
+    }
+
+    // to post detail page
+    public function postDetail($id) {
+        $brands = Brand::all();
+        $categories = Category::all();
+        $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
+        // post detail
+        $post = Post::find($id);
+        return view('users.blog_detail', compact('brands', 'categories', 'recentPosts', 'post'));
     }
 }

@@ -13,31 +13,44 @@ use App\Http\Controllers\User\ShopAjaxController;
 use App\Http\Controllers\Admin\AdminAjaxController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\User\BlogAjaxController;
 use App\Http\Controllers\User\ContactAjaxController;
 use App\Models\Contact;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// for shop page
-Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
-// for shop laptop detail page
-Route::get('/shop/detail/{id}', [HomeController::class, 'shopDetail'])->name('shop.detail');
-// for all brands page when click view more
-Route::get('/shop/all-brands', [HomeController::class, 'allBrands'])->name('shop.brands');
-// for all laptops page when click view more
-Route::get('/shop/all-laptops', [HomeController::class, 'allLaptops'])->name('shop.laptops');
-// for search laptops in search bar
-Route::get('/shop/search-filter', [HomeController::class, 'searchLaptops'])->name('shop.search');
-// for search laptops by clicking brand
-Route::get('/shop/search-by-brand/{id}', [HomeController::class, 'searchByBrand'])->name('shop.searchBrand');
+
+// Shop
+Route::group(['prefix' => 'shop'], function() {
+    // for shop page
+    Route::get('/', [HomeController::class, 'shop'])->name('shop');
+    // for shop laptop detail page
+    Route::get('/detail/{id}', [HomeController::class, 'shopDetail'])->name('shop.detail');
+    // for all brands page when click view more
+    Route::get('/all-brands', [HomeController::class, 'allBrands'])->name('shop.brands');
+    // for all laptops page when click view more
+    Route::get('/all-laptops', [HomeController::class, 'allLaptops'])->name('shop.laptops');
+    // for search laptops in search bar
+    Route::get('/search-filter', [HomeController::class, 'searchLaptops'])->name('shop.search');
+    // for search laptops by clicking brand
+    Route::get('/search-by-brand/{id}', [HomeController::class, 'searchByBrand'])->name('shop.searchBrand');
+});
+
 // for contact page
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-// for blog page
-Route::get('/blog/posts', [HomeController::class, 'blog'])->name('blog');
-// for search posts by category
-Route::get('/blog/posts/search-by-category/{id}', [HomeController::class, 'searchByCategory'])->name('blog.categorySearch');
-// for search posts with input
-Route::get('/blog/posts/search-by', [HomeController::class, 'searchPosts'])->name('blog.search');
 
+// Blog
+Route::group(['prefix' => 'blog'], function() {
+    // for blog page
+    Route::get('/posts', [HomeController::class, 'blog'])->name('blog');
+    // for search posts by category
+    Route::get('/posts/search-by-category/{id}', [HomeController::class, 'searchByCategory'])->name('blog.categorySearch');
+    // for search posts with input
+    Route::get('/posts/search-by', [HomeController::class, 'searchPosts'])->name('blog.search');
+    // for post detail page
+    Route::get('/posts/detail/{id}', [HomeController::class, 'postDetail'])->name('blog.detail');
+});
+
+// Authenticated
 Route::middleware(['auth'])->group(function () {
     // Admin
     Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
@@ -176,6 +189,10 @@ Route::middleware(['auth'])->group(function () {
         // for password update
         Route::post('/password/update', [ProfileController::class, 'passwordUpdate'])->name('userPassword.update');
     });
+
+    // User
+    // Blog
+    Route::get('/blog/posts/ajax/like', [BlogAjaxController::class, 'like'])->name('blog.ajaxLike');
 
     // User
     // for storing message from contact form with ajax

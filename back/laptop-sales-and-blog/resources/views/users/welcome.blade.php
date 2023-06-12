@@ -207,7 +207,7 @@
                 <div class="row mt-sm-4">
                     @foreach($posts as $post)
                     <div class="col-md-4 col-sm-6">
-                        <a href="" class="text-decoration-none">
+                        <a href="{{ route('blog.detail', $post->id) }}" class="text-decoration-none">
                             <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
                                 class="w-100 img-fluid object-fit-cover border">
                             <p class="text-muted mt-1">

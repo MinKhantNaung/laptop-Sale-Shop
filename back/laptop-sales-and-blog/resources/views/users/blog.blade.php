@@ -19,7 +19,7 @@
                             {{ $post->comments->count() }}
                         </p>
                         <h5 class="fw-bold text-capitalize">{{ $post->title }}</h5>
-                        <a href="" class="btn border border-1 border-black text-black my-3 rounded-pill">
+                        <a href="{{ route('blog.detail', $post->id) }}" class="btn border border-1 border-black text-black my-3 rounded-pill">
                             Read
                             <i class="fa-solid fa-right-long ms-1 fs-6"></i>
                         </a>
@@ -60,7 +60,7 @@
         <div class="mt-4">
             <h4 class="p-3 fw-bold">Recent Posts</h4>
             @foreach ($recentPosts as $post)
-                <a href="" class="text-decoration-none">
+                <a href="{{ route('blog.detail', $post->id) }}" class="text-decoration-none">
                     <div class="row mt-2">
                         <div class="col-4">
                             <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
@@ -79,8 +79,3 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-        $(document).ready(function() {})
-    </script>
-@endsection
