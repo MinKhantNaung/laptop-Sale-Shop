@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Models\Blog\Comment;
 use App\Models\Blog\Like;
+use App\Models\Blog\Comment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class BlogAjaxController extends Controller
 {
@@ -48,6 +49,21 @@ class BlogAjaxController extends Controller
             'comment' => $comment,
             'user' => $user,
             'timeAgo' => $timeAgo
+        ]);
+    }
+
+    public function deleteComment(Request $request) {
+        $comment = Comment::find($request->commentId);
+
+        if (!Gate::allows('delete-comment', $comment)) {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
+
+        $comment->delete();
+        return response()->json([
+            'success' => true,
         ]);
     }
 }

@@ -46,7 +46,8 @@
             <button class="button-hover btn text-white bg-dark rounded-circle position-relative ms-5" title="comment"
                 data-bs-toggle="modal" data-bs-target="#commentModal{{ $post->id }}">
                 <i class="fa-solid fa-comment"></i>
-                <span id="btnCommentCount" class="badge bg-danger position-absolute rounded-circle">{{ $post->comments->count() }}</span>
+                <span id="btnCommentCount"
+                    class="badge bg-danger position-absolute rounded-circle">{{ $post->comments->count() }}</span>
             </button>
         </p>
         <!-- Comments Modal -->
@@ -55,7 +56,8 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="commentModalLabel">Comments(<span id="commentCount">{{ $post->comments->count() }}</span>)</h1>
+                        <h1 class="modal-title fs-5" id="commentModalLabel">Comments(<span
+                                id="commentCount">{{ $post->comments->count() }}</span>)</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" id="commentList">
@@ -66,7 +68,10 @@
                                     <input type="hidden" value="{{ $post->id }}">
                                     <input type="hidden" value="{{ $comment->user->id }}">
                                     {{-- for get post_id and user_id --}}
-                                    <a href="#" class="btn-close float-end" onclick="confirm('Sure to delete?')"></a>
+                                    <input type="hidden" class="commentId" value="{{ $comment->id }}">
+                                    @auth
+                                        <button type="button" class="btn-close float-end deleteCommentBtn"></button>
+                                    @endauth
                                     {{ $comment->comment }}
                                     <div class="mt-2 small">
                                         By <b>{{ $comment->user->name }}</b>,
@@ -218,8 +223,8 @@
                                 <li class="list-group-item">
                                         <input type="hidden" value="${newComment.post_id}">
                                         <input type="hidden" value="${newComment.user_id}">
-                                        <a href="#" class="btn-close float-end"
-                                            onclick="confirm('Sure to delete?')"></a>
+                                        <input type="hidden" class="commentId" value="${newComment.id}">
+                                        <button type="button" class="btn-close float-end deleteCommentBtn"></button>
                                         ${newComment.comment}
                                         <div class="mt-2 small">
                                             By <b>${response.user}</b>,
@@ -243,6 +248,36 @@
                     }
                 })
             })
+
+            // Comment Delete
+            $('#commentList ul').on('click', '.deleteCommentBtn', function() {
+                if (confirm('Sure to delete this comment?')) {
+                    let li = $(this).closest('li');
+                    let commentId = li.find('.commentId').val();
+
+                    $.ajax({
+                        type: "get",
+                        url: "{{ route('blog.ajaxCommentDelete') }}",
+                        data: {
+                            'commentId': commentId
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                // remove comment in view
+                                li.remove();
+                                return swal('Attention!',
+                                    `Your comment deleted successfully.`,
+                                    'success');
+                            } else {
+                                return swal('Access Denied!',
+                                    `Only authorized users can delete comments`,
+                                    'warning');
+                            }
+                        }
+                    })
+                }
+            });
         })
     </script>
 @endsection
