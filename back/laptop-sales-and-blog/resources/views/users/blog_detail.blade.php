@@ -46,7 +46,7 @@
             <button class="button-hover btn text-white bg-dark rounded-circle position-relative ms-5" title="comment"
                 data-bs-toggle="modal" data-bs-target="#commentModal{{ $post->id }}">
                 <i class="fa-solid fa-comment"></i>
-                <span class="badge bg-danger position-absolute rounded-circle">{{ $post->comments->count() }}</span>
+                <span id="btnCommentCount" class="badge bg-danger position-absolute rounded-circle">{{ $post->comments->count() }}</span>
             </button>
         </p>
         <!-- Comments Modal -->
@@ -55,31 +55,26 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="commentModalLabel">Comments({{ $post->comments->count() }})</h1>
+                        <h1 class="modal-title fs-5" id="commentModalLabel">Comments(<span id="commentCount">{{ $post->comments->count() }}</span>)</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        @if ($post->comments->count() > 0)
-                            <ul class="list-group">
-                                @foreach ($post->comments as $comment)
-                                    <li class="list-group-item">
-                                        {{-- for get post_id and user_id --}}
-                                        <input type="text" value="{{ $post->id }}">
-                                        <input type="text" value="{{ $comment->user->id }}">
-                                        {{-- for get post_id and user_id --}}
-                                        <a href="#" class="btn-close float-end"
-                                            onclick="confirm('Sure to delete?')"></a>
-                                        {{ $comment->comment }}
-                                        <div class="mt-2 small">
-                                            By <b>{{ $comment->user->name }}</b>,
-                                            {{ $comment->created_at->diffForHumans() }}
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <h3 class="text-danger">No comments yet...</h3>
-                        @endif
+                    <div class="modal-body" id="commentList">
+                        <ul class="list-group">
+                            @foreach ($post->comments as $comment)
+                                <li class="list-group-item">
+                                    {{-- for get post_id and user_id --}}
+                                    <input type="hidden" value="{{ $post->id }}">
+                                    <input type="hidden" value="{{ $comment->user->id }}">
+                                    {{-- for get post_id and user_id --}}
+                                    <a href="#" class="btn-close float-end" onclick="confirm('Sure to delete?')"></a>
+                                    {{ $comment->comment }}
+                                    <div class="mt-2 small">
+                                        By <b>{{ $comment->user->name }}</b>,
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                     <div class="modal-footer">
                         @guest
@@ -87,9 +82,14 @@
                         @endguest
                         @auth
                             <!-- Auth -->
-                            <form action="" class="col-12">
-                                <textarea id="" class="form-control my-2" placeholder="Write a public comment..."></textarea>
-                                <button class="btn btn-sm btn-secondary float-end">
+                            <form id="commentForm" class="col-12">
+                                @csrf
+                                {{-- for get post_id, user_id  --}}
+                                <input type="hidden" id="post-id" value="{{ $post->id }}">
+                                <input type="hidden" id="user-id" value="{{ auth()->user()->id }}">
+                                {{-- for get post_id, user_id  --}}
+                                <textarea id="comment" class="form-control my-2" placeholder="Write a public comment..." required></textarea>
+                                <button type="submit" class="btn btn-sm btn-secondary float-end">
                                     <i class="fa-solid fa-paper-plane"></i>
                                     Confirm Comment
                                 </button>
@@ -179,7 +179,7 @@
                         'userId': userId
                     },
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         if (response.message == 'fail') {
                             return swal('Oops!', `You already liked this post!`,
                                 'warning');
@@ -190,6 +190,58 @@
                         }
                     }
                 });
+            })
+
+            // Comment Form
+            $('#commentForm').submit(function(e) {
+                e.preventDefault();
+                let comment = $('#comment').val();
+                let postId = Number($('#post-id').val());
+                let userId = Number($('#user-id').val());
+                // for increase comment count
+                let commentCount = Number($('#commentCount').text());
+                let btnCommentCount = Number($('#btnCommentCount').text());
+
+                $.ajax({
+                    type: 'get',
+                    url: "{{ route('blog.ajaxComment') }}",
+                    data: {
+                        'postId': postId,
+                        'userId': userId,
+                        'comment': comment
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            let newComment = response.comment;
+                            let newCommentHtml = `
+                                <li class="list-group-item">
+                                        <input type="hidden" value="${newComment.post_id}">
+                                        <input type="hidden" value="${newComment.user_id}">
+                                        <a href="#" class="btn-close float-end"
+                                            onclick="confirm('Sure to delete?')"></a>
+                                        ${newComment.comment}
+                                        <div class="mt-2 small">
+                                            By <b>${response.user}</b>,
+                                            ${response.timeAgo}
+                                        </div>
+                                    </li>
+                            `;
+
+                            // Append the new comment to the list-group
+                            $('#commentList ul').append(newCommentHtml);
+
+                            // Clear the comment input
+                            $('#comment').val('');
+
+                            // increase comment count
+                            commentCount++;
+                            btnCommentCount++;
+                            $('#commentCount').text(commentCount);
+                            $('#btnCommentCount').text(btnCommentCount);
+                        }
+                    }
+                })
             })
         })
     </script>

@@ -85,7 +85,8 @@
                                                 <a class="nav-link fw-bold px-4" href="{{ route('blog') }}">BLOG</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link fw-bold px-4" href="{{ route('contact') }}">CONTACT</a>
+                                                <a class="nav-link fw-bold px-4"
+                                                    href="{{ route('contact') }}">CONTACT</a>
                                             </li>
                                         </ul>
                                         <!-- Guest -->
@@ -122,7 +123,8 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item" href="{{ route('userPassword.change') }}">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('userPassword.change') }}">
                                                                 <i class="fa-solid fa-key"></i> &nbsp;
                                                                 Change Password
                                                             </a>

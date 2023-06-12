@@ -193,6 +193,8 @@ Route::middleware(['auth'])->group(function () {
     // User
     // Blog
     Route::get('/blog/posts/ajax/like', [BlogAjaxController::class, 'like'])->name('blog.ajaxLike');
+    // to add comment with ajax
+    Route::get('/blog/posts/ajax/comment', [BlogAjaxController::class, 'comment'])->name('blog.ajaxComment');
 
     // User
     // for storing message from contact form with ajax

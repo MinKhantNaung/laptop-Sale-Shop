@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog\Comment;
 use App\Models\Blog\Like;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,24 @@ class BlogAjaxController extends Controller
 
         return response()->json([
             'message' => 'success'
+        ]);
+    }
+
+    public function comment(Request $request) {
+        $comment = Comment::create([
+            'post_id' => $request->postId,
+            'user_id' => $request->userId,
+            'comment' => $request->comment,
+        ]);
+
+        $user = $comment->user->name;
+        $timeAgo = $comment->created_at->diffForHumans();
+
+        return response()->json([
+            'success' => true,
+            'comment' => $comment,
+            'user' => $user,
+            'timeAgo' => $timeAgo
         ]);
     }
 }
