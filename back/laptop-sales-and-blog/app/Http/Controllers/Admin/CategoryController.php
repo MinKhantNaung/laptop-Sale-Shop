@@ -72,6 +72,7 @@ class CategoryController extends Controller
         foreach($category->posts as $post) {
             Storage::delete('public/post_images/' . $post->image);
         }
+        // Delete related posts
         $category->posts()->delete();
         $category->delete();
 

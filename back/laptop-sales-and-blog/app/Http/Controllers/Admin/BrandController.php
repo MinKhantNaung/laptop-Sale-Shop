@@ -92,6 +92,7 @@ class BrandController extends Controller
 
         // Delete related products
         $brand->products()->delete();
+
         // finally delete brand
         Storage::delete('public/brand_images/' . $brand->image);
         $brand->delete();
