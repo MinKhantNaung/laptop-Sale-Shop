@@ -84,8 +84,16 @@ class BrandController extends Controller
     public function destroy($id)
     {
         $brand = Brand::find($id);
-        Storage::delete('public/brand_images/' . $brand->image);
+
+        // Delete the images of related products
+        foreach($brand->products as $product) {
+            Storage::delete('public/product_images/' . $product->image);
+        }
+
+        // Delete related products
         $brand->products()->delete();
+        // finally delete brand
+        Storage::delete('public/brand_images/' . $brand->image);
         $brand->delete();
 
         return back()->with('danger', 'Brand deleted!');

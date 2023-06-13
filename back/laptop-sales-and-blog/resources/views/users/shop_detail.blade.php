@@ -29,9 +29,11 @@
                 @else
                     <h3 class="fw-bold text-danger">${{ $laptop->discount_price }}</h3>
                 @endif
-                <p class="text-muted">
-                    {!! $laptop->description !!}
-                </p>
+                <div class="row">
+                    <div class="col overflow-auto">
+                        {!! $laptop->description !!}
+                    </div>
+                </div>
                 <input type="hidden" id="currentLaptopId" value="{{ $laptop->id }}">
                 <div class="input-group bg-light d-flex align-items-center mt-3">
                     <button type="button" class="btn btn-white border-0 minus">

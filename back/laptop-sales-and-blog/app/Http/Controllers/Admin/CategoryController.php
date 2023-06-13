@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Blog\Category;
 use Illuminate\Http\Request;
+use App\Models\Blog\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -66,6 +67,11 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $category = Category::find($id);
+
+        // Delete the images of related posts
+        foreach($category->posts as $post) {
+            Storage::delete('public/post_images/' . $post->image);
+        }
         $category->posts()->delete();
         $category->delete();
 
