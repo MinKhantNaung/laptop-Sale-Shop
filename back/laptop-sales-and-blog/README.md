@@ -87,6 +87,7 @@ The primary purpose of blog system is to provide users with comprehensive and re
 
 ## Usage
 
+- Need Internet!
 - In DatabaseSeeder.php, I created admin account.
 - Login as admin,
   - Email - admin@gmail.com
