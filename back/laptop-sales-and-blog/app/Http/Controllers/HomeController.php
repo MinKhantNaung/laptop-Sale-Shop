@@ -215,6 +215,8 @@ class HomeController extends Controller
         $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
         // post detail
         $post = Post::find($id);
-        return view('users.blog_detail', compact('brands', 'categories', 'recentPosts', 'post'));
+        $comments = $post->comments->where('status', 'show');
+
+        return view('users.blog_detail', compact('brands', 'categories', 'recentPosts', 'post', 'comments'));
     }
 }

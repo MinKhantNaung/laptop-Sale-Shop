@@ -106,6 +106,8 @@ class PostController extends Controller
     // to post comments
     public function comments($id)
     {
-        return $id;
+        $post = Post::find($id);
+
+        return view('admin.blog.posts.comments', compact('post'));
     }
 }

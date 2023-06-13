@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Shop\Order;
-use App\Models\Shop\Product;
 use App\Models\User;
+use App\Models\Shop\Order;
+use App\Models\Blog\Comment;
+use App\Models\Shop\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminAjaxController extends Controller
 {
@@ -43,6 +44,31 @@ class AdminAjaxController extends Controller
 
         return response()->json([
             'message' => 'success',
+        ]);
+    }
+
+    // to toggle comment show/hide with ajax
+    public function manageComment(Request $request) {
+        $comment = Comment::find($request->commentId);
+
+        // check status
+        if ($comment->status == 'show') {
+            $comment->update([
+                'status' => 'hide',
+            ]);
+
+            return response()->json([
+                'message' => 'hided'
+            ]);
+        }
+
+        // if status is hide, change show
+        $comment->update([
+            'status' => 'show',
+        ]);
+
+        return response()->json([
+            'message' => 'showed',
         ]);
     }
 }

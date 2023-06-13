@@ -120,18 +120,22 @@ Route::middleware(['auth'])->group(function () {
 
             // Post Comments
             Route::get('/{id}/comments', [PostController::class, 'comments'])->name('admin.postComments');
+            // for toggle comment show/hide with ajax
+            Route::get('/comments/ajax/manage', [AdminAjaxController::class, 'manageComment'])->name('admin.manageComment');
         });
 
         // Manage Users
-        Route::get('/users/list', [AdminController::class, 'usersList'])->name('admin.usersList');
-        // for admins list with role admin
-        Route::get('/users/with-admin-role', [AdminController::class, 'adminsList'])->name('admin.adminsList');
-        // for users list with role user
-        Route::get('/users/with-user-role', [AdminController::class, 'normalUsers'])->name('admin.normalUsers');
-        // for create user page by admin
-        Route::get('/users/create', [AdminController::class, 'createUserPage'])->name('admin.createUserPage');
-        // for create user by admin
-        Route::post('/users/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
+        Route::group(['prefix' => 'users'], function() {
+            Route::get('/list', [AdminController::class, 'usersList'])->name('admin.usersList');
+            // for admins list with role admin
+            Route::get('/with-admin-role', [AdminController::class, 'adminsList'])->name('admin.adminsList');
+            // for users list with role user
+            Route::get('/with-user-role', [AdminController::class, 'normalUsers'])->name('admin.normalUsers');
+            // for create user page by admin
+            Route::get('/create', [AdminController::class, 'createUserPage'])->name('admin.createUserPage');
+            // for create user by admin
+            Route::post('/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
+        });
 
         // Users Ajax
         // for change role with ajax

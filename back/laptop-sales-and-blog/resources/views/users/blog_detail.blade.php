@@ -62,7 +62,7 @@
                     </div>
                     <div class="modal-body" id="commentList">
                         <ul class="list-group">
-                            @foreach ($post->comments as $comment)
+                            @foreach ($comments as $comment)
                                 <li class="list-group-item">
                                     {{-- for get post_id and user_id --}}
                                     <input type="hidden" value="{{ $post->id }}">
