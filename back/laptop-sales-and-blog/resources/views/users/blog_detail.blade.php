@@ -186,8 +186,11 @@
                     dataType: "json",
                     success: function(response) {
                         if (response.message == 'fail') {
-                            return swal('Oops!', `You already liked this post!`,
-                                'warning');
+                            return Swal.fire(
+                                'Oops!',
+                                'You already liked this post!',
+                                'error'
+                            );
                         } else {
                             // success
                             likeCountNumber++;
@@ -251,32 +254,53 @@
 
             // Comment Delete
             $('#commentList ul').on('click', '.deleteCommentBtn', function() {
-                if (confirm('Sure to delete this comment?')) {
-                    let li = $(this).closest('li');
-                    let commentId = li.find('.commentId').val();
+                Swal.fire({
+                    title: 'Oops!',
+                    text: "Sure to delete this comment?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let li = $(this).closest('li');
+                        let commentId = li.find('.commentId').val();
+                        // for decrease comment count
+                        let commentCount = Number($('#commentCount').text());
+                        let btnCommentCount = Number($('#btnCommentCount').text());
 
-                    $.ajax({
-                        type: "get",
-                        url: "{{ route('blog.ajaxCommentDelete') }}",
-                        data: {
-                            'commentId': commentId
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.success) {
-                                // remove comment in view
-                                li.remove();
-                                return swal('Attention!',
-                                    `Your comment deleted successfully.`,
-                                    'success');
-                            } else {
-                                return swal('Access Denied!',
-                                    `Only authorized users can delete comments`,
-                                    'warning');
+                        $.ajax({
+                            type: "get",
+                            url: "{{ route('blog.ajaxCommentDelete') }}",
+                            data: {
+                                'commentId': commentId
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.success) {
+                                    // remove comment in view
+                                    li.remove();
+                                    // decresae comment count
+                                    commentCount--;
+                                    btnCommentCount--;
+                                    $('#commentCount').text(commentCount);
+                                    $('#btnCommentCount').text(btnCommentCount);
+                                    return Swal.fire(
+                                        'Attention!',
+                                        'Your comment deleted successfully.',
+                                        'success'
+                                    );
+                                } else {
+                                    return Swal.fire(
+                                        'Access Denied',
+                                        'Only authorized users can delete their comments',
+                                        'error'
+                                    );
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             });
         })
     </script>

@@ -260,17 +260,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
 </script>
-{{-- Sweet Alert --}}
-<script src="{{ asset('assets/sweetalert.min.js') }}"></script>
+{{-- Sweet Alert 2 --}}
+<script src="{{ asset('assets/sweetalert2.all.min.js') }}"></script>
 <!-- Custom js -->
 <script src="{{ asset('assets/custom.js') }}"></script>
 
 {{-- for logout form --}}
 <script>
     function submitForm() {
-        if (confirm('Sure to logout?')) {
-            document.querySelector('#myForm').submit();
-        }
+        Swal.fire({
+            title: 'Oops!',
+            text: "Sure to logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.querySelector('#myForm').submit();
+            }
+        })
     }
 </script>
 @yield('script')

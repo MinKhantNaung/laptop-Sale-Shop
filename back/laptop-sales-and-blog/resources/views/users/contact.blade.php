@@ -168,8 +168,11 @@
                             nameError.text('');
                             emailError.text('');
                             messageError.text('');
-                            return swal('Oops!', `${response.error}`,
-                                'warning');
+                            return Swal.fire(
+                                'Oops!',
+                                `${response.error}`,
+                                'warning'
+                            );
                         } else {
                             // success
                             email.removeClass('is-invalid');
@@ -181,7 +184,11 @@
                             messageError.text('');
 
                             $('#contactForm')[0].reset();
-                            return swal('Thank You', `${response.message}`, 'success');
+                            return Swal.fire(
+                                'Thank You',
+                                `${response.message}`,
+                                'success'
+                            );
                         }
                     }
                 });

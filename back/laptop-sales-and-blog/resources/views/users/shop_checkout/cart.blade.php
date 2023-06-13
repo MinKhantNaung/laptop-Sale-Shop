@@ -98,35 +98,47 @@
             let successMessage = sessionStorage.getItem('successMessage');
 
             if (successMessage) {
-                swal('Good job!', `${successMessage}`,
-                    'success');
+                Swal.fire(
+                    'Good job!',
+                    `${successMessage}`,
+                    'success'
+                );
                 sessionStorage.removeItem('successMessage');
             }
 
             // for click cross button
             $('.cross-btn').click(function() {
-                if (confirm('Sure to remove this from cart?')) {
-                    let parentNode = $(this).closest('tr');
-                    let cartId = parentNode.find('.cartId').val();
-                    let cartCount = $('#cartCount');
-                    let cartCountValue = Number($('#cartCount').text());
+                Swal.fire({
+                    title: 'Oops!',
+                    text: "Sure to remove this product from cart?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let parentNode = $(this).closest('tr');
+                        let cartId = parentNode.find('.cartId').val();
+                        let cartCount = $('#cartCount');
+                        let cartCountValue = Number($('#cartCount').text());
 
-                    $.ajax({
-                        type: 'get',
-                        url: '/shop/products/ajax/clear-current-product',
-                        data: {
-                            'cartId': cartId,
-                        },
-                        dataType: 'json',
-                    });
+                        $.ajax({
+                            type: 'get',
+                            url: '/shop/products/ajax/clear-current-product',
+                            data: {
+                                'cartId': cartId,
+                            },
+                            dataType: 'json',
+                        });
 
-                    // to decrease cart count badge
-                    cartCount.text(cartCountValue - 1);
-                    // to remove row
-                    parentNode.remove();
-                    // to calculate final
-                    finalCalculation();
-                }
+                        // to decrease cart count badge
+                        cartCount.text(cartCountValue - 1);
+                        // to remove row
+                        parentNode.remove();
+                        // to calculate final
+                        finalCalculation();
+                    }
+                })
             })
 
             // for finally proceed to checkout
@@ -154,14 +166,18 @@
                             window.location.href = '/shop/products/checkout';
                         } else if (response.message == 'emptyError') {
                             // orderLists is empty array
-                            return swal('Oops! Your order is empty.',
+                            return Swal.fire(
+                                'Oops! Your order is empty.',
                                 'Please select products to add to your order.',
-                                'warning');
+                                'warning'
+                            );
                         } else {
                             // some order's quantity is '0'
-                            return swal('Invalid Quantity!',
+                            return Swal.fire(
+                                'Invalid Quantity!',
                                 'Please select a quantity greater than zero for each item in your order.',
-                                'warning');
+                                'warning'
+                            );
                         }
                     }
                 })

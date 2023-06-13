@@ -205,19 +205,19 @@
                 <h1 class="fw-bolder text-center mb-5 border-bottom border-3 pb-3">From The Blog
                 </h1>
                 <div class="row mt-sm-4">
-                    @foreach($posts as $post)
-                    <div class="col-md-4 col-sm-6">
-                        <a href="{{ route('blog.detail', $post->id) }}" class="text-decoration-none">
-                            <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
-                                class="w-100 img-fluid object-fit-cover border">
-                            <p class="text-muted mt-1">
-                                <i class="fa-regular fa-calendar"></i>
-                                {{ $post->updated_at->format('M d, Y') }} &nbsp; &nbsp;
-                                <i class="fa-regular fa-comment pe-1"></i>{{ $post->comments_count }}
-                            </p>
-                            <h5 class="text-capitalize text-black fw-bolder">{{ $post->title }}</h5>
-                        </a>
-                    </div>
+                    @foreach ($posts as $post)
+                        <div class="col-md-4 col-sm-6">
+                            <a href="{{ route('blog.detail', $post->id) }}" class="text-decoration-none">
+                                <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
+                                    class="w-100 img-fluid object-fit-cover border">
+                                <p class="text-muted mt-1">
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ $post->updated_at->format('M d, Y') }} &nbsp; &nbsp;
+                                    <i class="fa-regular fa-comment pe-1"></i>{{ $post->comments_count }}
+                                </p>
+                                <h5 class="text-capitalize text-black fw-bolder">{{ $post->title }}</h5>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -248,14 +248,20 @@
                             // rate fail
                             // for hiding modal
                             $(`#modal${laptopId}`).modal('hide');
-                            return swal('Sorry!', `You already rated this laptop!`,
-                                'warning');
+                            return Swal.fire(
+                                'Sorry!',
+                                'You already rated this laptop!',
+                                'error'
+                            );
                         } else {
                             // rate success
                             // for hiding modal
                             $(`#modal${laptopId}`).modal('hide');
-                            return swal('Thank you!', `You rated ${response.productName}.`,
-                                'success');
+                            return Swal.fire(
+                                'Thank you!',
+                                `You rated ${response.productName}.`,
+                                'success'
+                            );
                         }
                     }
                 })

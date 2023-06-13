@@ -234,8 +234,11 @@
                             // rate fail
                             // for hiding modal
                             $(`#modal${laptopId}`).modal('hide');
-                            return swal('Sorry!', `You already rated this laptop!`,
-                                'warning');
+                            return Swal.fire(
+                                'Sorry!',
+                                'You already rated this laptop!',
+                                'error'
+                            );
                         } else {
                             // rate success
                             // for changing rating if current laptop rating
@@ -244,8 +247,11 @@
                             }
                             // for hiding modal
                             $(`#modal${laptopId}`).modal('hide');
-                            return swal('Thank you!', `You rated ${response.productName}.`,
-                                'success');
+                            return Swal.fire(
+                                'Thank you!',
+                                `You rated ${response.productName}.`,
+                                'success'
+                            );
                         }
                     }
                 })

@@ -47,7 +47,11 @@
         $(document).ready(function() {
             let successMessage = sessionStorage.getItem('successMessage');
             if (successMessage) {
-                swal('Thank you!', `${successMessage}`, 'success');
+                Swal.fire(
+                    'Thank you!',
+                    `${successMessage}`,
+                    'success'
+                );
                 sessionStorage.removeItem('successMessage');
             }
         })
