@@ -44,7 +44,8 @@ The primary purpose of blog system is to provide users with comprehensive and re
   - Each product added to the cart must have a count greater than zero when users proceed to checkout. 
 6. **Blog Section**:  The frontend incorporates a blog section that features informative and engaging articles related to laptops. And posts with other categories.
 7. **Comment System**: The frontend includes a comment system for blog posts. Users can comment posts. *Authorized users have the ability to delete their own comments if necessary*.
-8. **Contact Information**: The frontend provides contact information, including email, phone number, and location map, allowing users to easily reach out for inquiries, support, or further assistance.
+8. **Like System**: Authenticated users can like posts.
+9. **Contact Information**: The frontend provides contact information, including email, phone number, and location map, allowing users to easily reach out for inquiries, support, or further assistance.
 
 
 ## Technologies Used 
