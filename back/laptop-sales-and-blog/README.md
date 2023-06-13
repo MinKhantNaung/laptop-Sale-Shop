@@ -55,8 +55,9 @@ The primary purpose of blog system is to provide users with comprehensive and re
 - HTML/CSS
 - Javascript
 - Bootstrap 5
-- Fontawesome, Sweetalert 2
+- Fontawesome, Sweetalert 2, Ckeditor
 - jQuery leaflet map location picker
+- jQuery am_map.js
 
 ## Installation
 
