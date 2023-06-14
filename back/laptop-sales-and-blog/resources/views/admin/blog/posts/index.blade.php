@@ -69,6 +69,7 @@
                                         <th>Title</th>
                                         <th>Image</th>
                                         <th>Category</th>
+                                        <th>Likes</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -83,6 +84,9 @@
                                                     style="width:100px">
                                             </td>
                                             <td class="text-nowrap">{{ $post->category->name }}</td>
+                                            <td class="text-nowrap">{{ $post->likes->count() }}
+                                                <i class="fa-regular fa-heart"></i>
+                                            </td>
                                             <td class="text-nowrap">
                                                 <form action="{{ route('admin.postDelete', $post->id) }}" method="POST">
                                                     @csrf
