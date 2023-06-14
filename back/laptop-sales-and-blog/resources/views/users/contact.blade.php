@@ -89,31 +89,6 @@
     <script src="{{ asset('assets/leaflet/am_map.js') }}"></script>
     <script>
         $(document).ready(function() {
-            let lati = Number($('.lat').val());
-            let long = Number($('.long').val());
-
-            let map = $("#myMap").am_map({
-                // center of the map
-                center: [lati, long],
-                // map height
-                height: '400px',
-                background: 'osm',
-            });
-
-            $("#myMap").am_map('addLayer', {
-                // unique name
-                name: 'iconLayer',
-                // marker point
-                points: [lati, long],
-                // custom icon HTML
-                icon: '<i class="fa-solid fa-location-dot text-success" style="font-size:50px"></i>',
-                // initial zoom level
-                zoom: 15,
-                // zoom level at which the layer is visible
-                limitZoom: 8,
-            });
-            // Map Picker end
-
             // contact form
             $('#contactForm').submit(function(e) {
                 e.preventDefault();
@@ -193,6 +168,31 @@
                     }
                 });
             })
+
+            let lati = Number($('.lat').val());
+            let long = Number($('.long').val());
+
+            let map = $("#myMap").am_map({
+                // center of the map
+                center: [lati, long],
+                // map height
+                height: '400px',
+                background: 'osm',
+            });
+
+            $("#myMap").am_map('addLayer', {
+                // unique name
+                name: 'iconLayer',
+                // marker point
+                points: [lati, long],
+                // custom icon HTML
+                icon: '<i class="fa-solid fa-location-dot text-success" style="font-size:50px"></i>',
+                // initial zoom level
+                zoom: 15,
+                // zoom level at which the layer is visible
+                limitZoom: 8,
+            });
+            // Map Picker end
         });
     </script>
 @endsection
