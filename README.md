@@ -1,21 +1,16 @@
-# Laptop Sale and Blog
 
-I started this project on May 21, 2023 and have not finished it yet. I am still in the process of continuously writing it.
+# Laptop Sales and Blog
 
-## New Features not exist in previous projects
-I want to write this features-
-- rating system (with jquery ajax in frondend)
-- discount system
-- comment system (with jquery ajax in frondend)
+I started this project on May 21, 2023 and finished in June 13, 2023.
 
-## Cart And Order System Updated
+## Back
 
-- cart and order system updated with validation features
-- before proceed to checkout, order products must not be empty.
-- quantity for each order product must be greater than '0'.
+In back folder, laptop-sales-and-blog is full stack web app with Laravel 9.
 
-## Finished
+## Frond 
 
-- Only Blog system remains (Other features finished)
+In frond folder, it is my frondend files without backend.
+
+
 
 

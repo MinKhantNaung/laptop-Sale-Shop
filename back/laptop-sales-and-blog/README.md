@@ -1,66 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Project Title
 
-## About Laravel
+Laptop Sales and Blog
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Description
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is a comprehensive solution that combines a Point of Sale (POS) system and a blog system. It is specifically designed for selling new and second-hand laptops. The POS system enables efficient management of inventory, discounts, and effective customer interactions.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The primary purpose of blog system is to provide users with comprehensive and reliable information about laptops. My goal is to empower users with the knowledge they need to make informed decisions when purchasing laptops, whether they are interested in new or second-hand devices.
 
-## Learning Laravel
+## Admin Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- POS
+- Brand Management:
+  - Ability to create, update and delete brands.
+  - Deletion of related products and images when deleting a brand.
+- Product Management:
+  - Ability to create, update and delete products.
+- Product Order Management:
+  - Ability to manage product orders.
+- Blog
+- Category Management:
+  - Ability to create, update and delete categories.
+  - Deletion of related posts and images when deleting a category. 
+- Post Management:
+  - Ability of create, update and delete posts.
+- Post Comment Management:
+  - can manage show or hide comments.
+- User Management                                 
+  - User creation with customizable roles and permissions.
+  - Admin can manage roles for all users.
+- Contact 
+  - Admin can set contact details such as email, phone, and location map.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Frondend Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Responsive Design**: The frontend is designed to be responsive, ensuring compatibility across different devices and screen sizes. Users can access and utilize the system seamlessly from desktops, laptops, tablets, and mobile devices.
+2. **User Authentication**: The frontend includes a user authentication system that allows users to create accounts, log in, and manage their profiles. They can also reset password.
+3. **Product Listings**: The frontend displays a comprehensive listing of available laptops, showcasing essential information such as product images, specifications, pricing, and availability. Users can easily browse and search for laptops based on their preferences and needs.
+4. **Product Rating**: Authenticated users can access personalized features, such as rating products.
+5. **Cart Validation**: 
+  - Users are not allowed to proceed to the cart if it is empty.
+  - Each product added to the cart must have a count greater than zero when users proceed to checkout. 
+6. **Blog Section**:  The frontend incorporates a blog section that features informative and engaging articles related to laptops. And posts with other categories.
+7. **Comment System**: The frontend includes a comment system for blog posts. Users can comment posts. *Authorized users have the ability to delete their own comments if necessary*.
+8. **Like System**: Authenticated users can like posts.
+9. **Contact Information**: The frontend provides contact information, including email, phone number, and location map, allowing users to easily reach out for inquiries, support, or further assistance.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Technologies Used 
 
-### Premium Partners
+- Laravel (9)
+- jQuery 
+- Ajax
+- HTML/CSS
+- Javascript
+- Bootstrap 5
+- Fontawesome, Sweetalert 2, Ckeditor
+- jQuery leaflet map location picker
+- jQuery am_map.js
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Installation
 
-## Contributing
+- If cloning my project is complete or download is complete, open terminal in project directory.
+- Install composer dependicies
+  - **composer install** (command)
+- Install npm dependicies
+  - **npm install**
+- Create a copy of .env file
+  - **cp .env.example .env**
+- Generate an app encryption key
+  - **php artisan key:generate**
+- Create an empty database for my web project
+  - created database name must match from .env file
+- Start npm 
+  - **npm run build**
+- Seed Database
+  - **php artisan db:seed**
+- Delete storage folder from public/ and link storage
+  - **php artisan storage:link**
+- Migrate
+  - **php artisan migrate**
+- Start 
+  - **php artisan serve**
+- type in url with port 
+  - localhost:8000
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Usage
 
-## Code of Conduct
+- Need Internet!
+- In DatabaseSeeder.php, I created admin account.
+- Login as admin,
+  - Email - admin@gmail.com
+  - Password - password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
