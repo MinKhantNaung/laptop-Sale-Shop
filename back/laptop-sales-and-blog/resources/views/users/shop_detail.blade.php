@@ -21,7 +21,11 @@
                 {{-- for condition current laptop? --}}
                 <input type="hidden" value="{{ $laptop->id }}" id="currentLaptopId">
                 <p><span id="laptop-detail-rating">{{ number_format($laptop->users()->avg('rating'), 1) }}</span> <i
-                        class="fa-solid fa-star text-warning"></i>&nbsp; (ratings)</p>
+                        class="fa-solid fa-star text-warning"></i>&nbsp; (ratings)
+                    {{-- view count  --}}
+                    | <i class="fa-solid fa-eye"></i>
+                    {{ $laptop->view_count }}
+                </p>
                 @if ($laptop->discount > 0)
                     <h3 class="fw-bold text-danger">${{ $laptop->discount_price }}
                         <span class="text-decoration-line-through text-primary">${{ $laptop->price }}</span>

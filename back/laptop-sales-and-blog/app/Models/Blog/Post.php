@@ -14,6 +14,7 @@ class Post extends Model
         'title',
         'content',
         'image',
+        'view_count',
     ];
 
     public function category() {

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->decimal('discount');
             $table->decimal('discount_price');
+            $table->integer('view_count')->default(0);
             $table->string('condition'); // new/second
             $table->string('status');    // available/not available
             $table->timestamps();

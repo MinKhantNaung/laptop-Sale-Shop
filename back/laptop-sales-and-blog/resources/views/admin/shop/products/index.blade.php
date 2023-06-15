@@ -74,6 +74,7 @@
                                         <th>Rating</th>
                                         <th>Price</th>
                                         <th>Discount Price</th>
+                                        <th>View</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -105,6 +106,9 @@
                                             </td>
                                             <td class="text-nowrap">${{ $product->price }}</td>
                                             <td class="text-nowrap">${{ $product->discount_price }}</td>
+                                            <td class="text-nowrap">{{ $product->view_count }}
+                                                <i class="fa-solid fa-eye"></i>
+                                            </td>
                                             <td class="text-nowrap">
                                                 <form action="{{ route('products.destroy', $product->id) }}"
                                                     method="POST">

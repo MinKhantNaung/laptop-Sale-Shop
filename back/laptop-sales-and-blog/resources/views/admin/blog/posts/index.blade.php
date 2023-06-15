@@ -70,6 +70,7 @@
                                         <th>Image</th>
                                         <th>Category</th>
                                         <th>Likes</th>
+                                        <th>View</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -86,6 +87,9 @@
                                             <td class="text-nowrap">{{ $post->category->name }}</td>
                                             <td class="text-nowrap">{{ $post->likes->count() }}
                                                 <i class="fa-regular fa-heart"></i>
+                                            </td>
+                                            <td class="text-nowrap">{{ $post->view_count }}
+                                                <i class="fa-solid fa-eye"></i>
                                             </td>
                                             <td class="text-nowrap">
                                                 <form action="{{ route('admin.postDelete', $post->id) }}" method="POST">

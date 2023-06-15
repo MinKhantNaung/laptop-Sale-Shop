@@ -60,6 +60,8 @@ class HomeController extends Controller
     {
         $brands = Brand::all();
         $laptop = Product::find($id);
+        // to increase view count
+        $laptop->increment('view_count');
         $related_laptops = Product::where('brand_id', $laptop->brand_id)
             ->whereNotIn('id', [$laptop->id])
             ->take(4)
@@ -215,6 +217,8 @@ class HomeController extends Controller
         $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
         // post detail
         $post = Post::find($id);
+        // to increase view count
+        $post->increment('view_count');
         $comments = $post->comments->where('status', 'show');
 
         return view('users.blog_detail', compact('brands', 'categories', 'recentPosts', 'post', 'comments'));

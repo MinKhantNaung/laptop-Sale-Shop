@@ -8,7 +8,10 @@
         <h2 class="text-black text-capitalize text-center fw-bolder px-1 pb-3">
             {{ $post->title }}
         </h2>
-        <p class="fs-6 text-black text-center pb-3">By Admin | {{ $post->updated_at->format('M d, Y') }}</p>
+        <p class="fs-6 text-black text-center pb-3">By Admin | {{ $post->updated_at->format('M d, Y') }}
+            | <i class="fa-solid fa-eye"></i>
+            {{ $post->view_count }}
+        </p>
         <img src="{{ asset('storage/post_images/' . $post->image) }}" alt="post image"
             class="w-100 border img-fluid object-fit-cover">
         <div class="row mt-4 mb-4">
