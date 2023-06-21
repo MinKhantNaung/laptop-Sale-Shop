@@ -116,7 +116,7 @@
                     Laptops</h1>
                 <div class="row mt-sm-4">
                     @foreach ($rate_laptops as $laptop)
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 glide__slide">
                             <div class="card mt-3">
                                 <img src="{{ asset('storage/product_images/' . $laptop->image) }}" style="height:150px"
                                     class="card-img-top img-fluid object-fit-cover" alt="image">

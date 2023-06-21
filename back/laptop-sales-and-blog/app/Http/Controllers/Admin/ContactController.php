@@ -31,7 +31,7 @@ class ContactController extends Controller
             'email' => 'required|unique:users,email',
             'address' => 'required',
             'open_time' => 'required',
-            'close_time' => 'required',
+            'close_time' => 'required|after:open_time',
             'coordinates' => 'required',
         ]);
 
@@ -39,7 +39,7 @@ class ContactController extends Controller
         $values = explode(',', $request->coordinates);
         $latitude = $values[0];
         $longitude = $values[1];
-        
+
         Contact::create([
             'phone' => $request->phone,
             'email' => $request->email,
@@ -53,7 +53,7 @@ class ContactController extends Controller
         return redirect()->route('admin.contact')->with('success', 'Contact created successfully!');
     }
 
-    // to edit contact 
+    // to edit contact
     public function editContact($id) {
         $contact = Contact::find($id);
         $coordinates = $contact->latitude . ',' . $contact->longitude;
@@ -83,7 +83,7 @@ class ContactController extends Controller
             'open_time' => $request->open_time,
             'close_time' => $request->close_time,
             'latitude' => $latitude,
-            'longitude' => $longitude, 
+            'longitude' => $longitude,
         ]);
 
         return redirect()->route('admin.contact')->with('warning', 'Contact updated successfully!');
