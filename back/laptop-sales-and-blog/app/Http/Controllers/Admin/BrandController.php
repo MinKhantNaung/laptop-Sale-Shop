@@ -86,7 +86,7 @@ class BrandController extends Controller
         $brand = Brand::find($id);
 
         // Delete the images of related products
-        foreach($brand->products as $product) {
+        foreach ($brand->products as $product) {
             Storage::delete('public/product_images/' . $product->image);
         }
 
