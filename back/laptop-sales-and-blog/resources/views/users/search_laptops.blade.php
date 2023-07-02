@@ -21,7 +21,11 @@
                                         @endphp
                                         @if ($value != '')
                                             @if ($name == 'brand_id')
-                                                <li>brand: {{ $brand->name }}</li>
+                                                @if ($brand)
+                                                    <li>brand: {{ $brand->name }}</li>
+                                                @else
+                                                    <li>brand not found</li>
+                                                @endif
                                             @elseif ($name == 'status')
                                                 @if ($value == 'yes')
                                                     <li>status: available</li>
