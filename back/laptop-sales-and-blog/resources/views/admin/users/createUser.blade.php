@@ -5,7 +5,7 @@
     <div class="card shadow mb-4 col-12">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary text-center">
-                Create a user and assign his role
+                Create an admin
             </h6>
         </div>
         <div class="card-body">
@@ -54,8 +54,7 @@
                                     <td>:</td>
                                     <td>
                                         <select name="role" id="role" class="form-select">
-                                            <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
-                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                            <option value="admin" selected>Admin</option>
                                         </select>
                                     </td>
                                 </tr>

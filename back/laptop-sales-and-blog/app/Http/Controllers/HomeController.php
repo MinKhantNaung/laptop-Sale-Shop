@@ -214,7 +214,7 @@ class HomeController extends Controller
     public function postDetail($id) {
         $brands = Brand::all();
         $categories = Category::all();
-        $recentPosts = Post::orderBy('updated_at', 'desc')->take(3)->get();
+        $recentPosts = Post::orderBy('id', 'desc')->take(3)->get();
         // post detail
         $post = Post::find($id);
         // to increase view count

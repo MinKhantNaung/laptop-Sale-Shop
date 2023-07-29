@@ -4,8 +4,28 @@
 
 @section('content')
     <div class="col-12 my-4">
+        {{-- search section --}}
+        <div class="col-md-6 offset-md-3 my-2" id="searchBar">
+            <form action="{{ route('shop.search') }}" method="GET">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" class="form-control bg-light py-2" placeholder="Search laptops">
+                    <select name="brand_id">
+                        <option value="">Brand</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-info ms-3">Search</button>
+                </div>
+            </form>
+        </div>
+        {{-- search section end --}}
+
         <!-- Filter and items Section -->
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1 mt-2">
             <div class="row">
                 <!-- items Section start -->
                 <div class="col-md-8 order-md-2 mb-5">

@@ -4,6 +4,26 @@
 
 @section('content')
     <div class="col-12 my-4">
+        {{-- Search section --}}
+        <div class="col-md-6 offset-md-3 my-2" id="searchBar">
+            <form action="{{ route('shop.search') }}" method="GET">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" class="form-control bg-light py-2" placeholder="Search laptops">
+                    <select name="brand_id">
+                        <option value="">Brand</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-info ms-3">Search</button>
+                </div>
+            </form>
+        </div>
+        {{-- Search Section end --}}
+
         <!-- all laptops Section -->
         <section id="items">
             <div class="row">

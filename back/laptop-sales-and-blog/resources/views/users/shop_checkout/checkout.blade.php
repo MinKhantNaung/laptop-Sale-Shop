@@ -3,7 +3,7 @@
 @section('title', 'MM Laptops-Shop')
 
 @section('content')
-    <h1 class="fw-bolder text-center mb-3 border-bottom border-3 pb-3 text-white bg-info">
+    <h1 class="fw-bolder text-center my-3 border-bottom border-3 pb-3 text-white bg-info">
         Your Orders
     </h1>
     <div class="table-responsive">

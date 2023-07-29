@@ -28,7 +28,7 @@
                         <div class="col-12">
                             <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
                                 <div class="container">
-                                    <a class="navbar-brand fw-bolder fs-3" href="#">MM-LAPTOPS</a>
+                                    <a class="navbar-brand fw-bolder fs-3" href="{{ route('home') }}">MM-LAPTOPS</a>
                                     {{-- cart and checkout --}}
                                     @guest
                                         <a href="{{ route('login') }}" class="text-black fs-6 p-0 position-relative"
@@ -149,7 +149,7 @@
                             </nav>
                             <img src="{{ asset('images/laptop_home.jpg') }}" alt="image"
                                 class="w-100 img-fluid object-fit-cover" id="respon-img">
-                            <div class="col-md-6 offset-md-3 my-3" id="searchBar">
+                            {{-- <div class="col-md-6 offset-md-3 my-3" id="searchBar">
                                 <form action="{{ route('shop.search') }}" method="GET">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">
@@ -166,7 +166,7 @@
                                         <button type="submit" class="btn btn-info ms-3">Search</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </section>

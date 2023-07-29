@@ -3,7 +3,8 @@
 @section('title', 'MM Laptops-Blog')
 
 @section('content')
-    <!-- Post Detail Section -->
+    <div class="row mt-5">   
+        <!-- Post Detail Section -->
     <div class="col-md-8 order-md-5">
         <h2 class="text-black text-capitalize text-center fw-bolder px-1 pb-3">
             {{ $post->title }}
@@ -165,6 +166,7 @@
                 </a>
             @endforeach
         </div>
+    </div>
     </div>
 @endsection
 

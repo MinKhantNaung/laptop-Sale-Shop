@@ -5,6 +5,24 @@
 @section('content')
     <!-- Intro Section -->
     <div class="col-12 my-4 position-relative">
+        <div class="col-md-6 offset-md-3 my-2" id="searchBar">
+            <form action="{{ route('shop.search') }}" method="GET">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" class="form-control bg-light py-2" placeholder="Search laptops">
+                    <select name="brand_id">
+                        <option value="">Brand</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-info ms-3">Search</button>
+                </div>
+            </form>
+        </div>
+
         <img src="{{ asset('images/laptop_illu1.webp') }}" alt="intro image" class="w-100 img-fluid object-fit-cover">
         <div class="position-absolute top-50 start-50 translate-middle">
             <h1 class="fw-bolder" style="color:rgb(28, 86, 179);">MM Laptops

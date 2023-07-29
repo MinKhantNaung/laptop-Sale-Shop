@@ -8,7 +8,7 @@
             <h1 class="h3 mb-2 text-gray-800">Users
                 <a href="{{ route('admin.createUserPage') }}" class="btn btn-sm btn-primary float-end">
                     <i class="fa-solid fa-user-plus"></i>
-                    Create User
+                    Create Admin
                 </a>
             </h1>
         </div>
