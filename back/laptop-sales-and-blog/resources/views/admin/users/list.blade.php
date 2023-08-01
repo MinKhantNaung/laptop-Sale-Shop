@@ -59,8 +59,17 @@
                             </form>
                         </div>
                         <div>
-                            <a href="{{ route('admin.adminsList') }}">Admins</a> |
-                            <a href="{{ route('admin.normalUsers') }}">Users</a>
+                            @if (request()->routeIs('admin.adminsList'))
+                                <span class="text-secondary">Admins</span> |
+                            @else
+                                <a href="{{ route('admin.adminsList') }}">Admins</a> |
+                            @endif
+
+                            @if (request()->routeIs('admin.normalUsers'))
+                                <span class="text-secondary">Users</span>
+                            @else
+                                <a href="{{ route('admin.normalUsers') }}">Users</a>
+                            @endif
                         </div>
                     </h6>
                 </div>
@@ -88,7 +97,8 @@
                                         <td class="text-nowrap userRole">{{ $user->role }}</td>
                                         <td class="text-nowrap">
                                             <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#userModal{{ $user->id }}" {{ $user->role == 'admin' ? 'disabled' : '' }}>
+                                                data-bs-target="#userModal{{ $user->id }}"
+                                                {{ $user->role == 'admin' ? 'disabled' : '' }}>
                                                 <i class="fa-solid fa-circle-info"></i>
                                             </button>
                                             <!-- Modal -->
@@ -159,7 +169,8 @@
                                                                             </td>
                                                                             <td>:</td>
                                                                             <td>
-                                                                                <input type="hidden" id="userId" value="{{ $user->id }}">
+                                                                                <input type="hidden" id="userId"
+                                                                                    value="{{ $user->id }}">
                                                                                 <select id="role" class="form-control">
                                                                                     <option value="admin"
                                                                                         {{ $user->role == 'admin' ? 'selected' : '' }}>
@@ -218,7 +229,7 @@
                         'userId': userId
                     },
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         if (response.message == 'success') {
                             $(`#userModal${userId}`).modal('hide');
                             alert('You changed a user\'s role successfully!');

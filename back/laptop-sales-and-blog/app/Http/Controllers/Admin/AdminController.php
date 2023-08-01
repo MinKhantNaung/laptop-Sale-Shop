@@ -143,6 +143,6 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
 
-        return redirect()->route('admin.usersList')->with('success', 'You created a user successfully!');
+        return redirect()->route('admin.usersList')->with('success', 'You created an admin successfully!');
     }
 }

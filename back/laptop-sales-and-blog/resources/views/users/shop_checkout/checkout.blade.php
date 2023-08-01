@@ -4,41 +4,45 @@
 
 @section('content')
     <h1 class="fw-bolder text-center my-3 border-bottom border-3 pb-3 text-white bg-info">
-        Your Orders
+        Checkout
     </h1>
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr class="fw-bold">
-                    <th class="text-nowrap">Date</th>
-                    <th class="text-nowrap">Order Code</th>
-                    <th class="text-nowrap">Total Price</th>
-                    <th class="text-nowrap">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orders as $order)
+        @if ($orders->count() > 0)
+            <table class="table table-striped table-hover">
+                <thead>
                     <tr class="fw-bold">
-                        <td class="text-nowrap">{{ $order->created_at->diffForHumans() }}</td>
-                        <td class="text-nowrap">{{ $order->order_code }}</td>
-                        <td class="text-danger text-nowrap">${{ $order->total }}</td>
-                        <td
-                            class="text-nowrap @if ($order->status == 0) text-warning @elseif($order->status == 1) text-success @else text-danger @endif">
-                            @if ($order->status == 0)
-                                <i class="fa-solid fa-clock"></i>
-                                pending
-                            @elseif($order->status == 1)
-                                <i class="fa-solid fa-circle-check"></i>
-                                success
-                            @else
-                                <i class="fa-solid fa-circle-xmark"></i>
-                                fail
-                            @endif
-                        </td>
+                        <th class="text-nowrap">Date</th>
+                        <th class="text-nowrap">Order Code</th>
+                        <th class="text-nowrap">Total Price</th>
+                        <th class="text-nowrap">Status</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($orders as $order)
+                        <tr class="fw-bold">
+                            <td class="text-nowrap">{{ $order->created_at->diffForHumans() }}</td>
+                            <td class="text-nowrap">{{ $order->order_code }}</td>
+                            <td class="text-danger text-nowrap">${{ $order->total }}</td>
+                            <td
+                                class="text-nowrap @if ($order->status == 0) text-warning @elseif($order->status == 1) text-success @else text-danger @endif">
+                                @if ($order->status == 0)
+                                    <i class="fa-solid fa-clock"></i>
+                                    pending
+                                @elseif($order->status == 1)
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    success
+                                @else
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    fail
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+        <h1 class="text-center text-warning my-5">No checkout found...</h1>
+        @endif
     </div>
 @endsection
 

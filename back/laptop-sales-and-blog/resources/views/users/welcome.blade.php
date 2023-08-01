@@ -31,7 +31,7 @@
             </h1>
             <p class="fw-bold text-muted d-none d-sm-block">Free Pickup and Delivery Available
             </p>
-            <a href="" class="btn btn-info px-sm-4 py-sm-3 text-white">Shop Now</a>
+            <a href="{{ route('shop') }}" class="btn btn-info px-sm-4 py-sm-3 text-white">Shop Now</a>
         </div>
     </div>
 
