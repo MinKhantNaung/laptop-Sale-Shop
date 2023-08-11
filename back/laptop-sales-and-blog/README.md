@@ -75,12 +75,12 @@ The primary purpose of blog system is to provide users with comprehensive and re
   - created database name must match from .env file
 - Start npm 
   - **npm run build**
+- Migrate
+  - **php artisan migrate**
 - Seed Database
   - **php artisan db:seed**
 - Delete storage folder from public/ and link storage
   - **php artisan storage:link**
-- Migrate
-  - **php artisan migrate**
 - Start 
   - **php artisan serve**
 - type in url with port 
