@@ -9,6 +9,19 @@ This project is a comprehensive solution that combines a Point of Sale (POS) sys
 
 The primary purpose of blog system is to provide users with comprehensive and reliable information about laptops. My goal is to empower users with the knowledge they need to make informed decisions when purchasing laptops, whether they are interested in new or second-hand devices.
 
+## Screenshots
+
+### Admin Dashboard  
+![Admin Brand View](screenshots/admin_brand_view.png)
+![Admin Product View](screenshots/admin_products_view.png)
+![Admin Blog View](screenshots/admin_blog_view.png)
+![Admin Contact View](screenshots/admin_contact_create.png)
+
+### Customer View
+![User Blog View](screenshots/user_blog_view.png)
+![User Product View](screenshots/user_product_detail_view.png)
+![User Blog View](screenshots/user_contact_view.png)
+
 ## Admin Features
 
 - POS
