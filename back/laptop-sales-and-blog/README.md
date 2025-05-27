@@ -79,7 +79,7 @@ The primary purpose of blog system is to provide users with comprehensive and re
   - **php artisan migrate**
 - Seed Database
   - **php artisan db:seed**
-- Delete storage folder from public/ and link storage
+- link storage
   - **php artisan storage:link**
 - Start 
   - **php artisan serve**
